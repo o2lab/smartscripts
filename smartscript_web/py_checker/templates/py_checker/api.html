@@ -1,0 +1,566 @@
+<!DOCTYPE html><html><head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164875144-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-164875144-1');
+</script>
+
+      <title>api</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+      
+      
+
+      
+      
+      
+      
+      
+      
+      
+
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="api-methods">API Methods</h1>
+
+<ul>
+<li><a href="#api-methods">API Methods</a>
+<ul>
+<li><a href="#dict_key-error-detector">&apos;Dict_key&apos; Error Detector</a>
+<ul>
+<li><a href="#request">Request</a></li>
+<li><a href="#response">Response</a></li>
+</ul>
+</li>
+<li><a href="#type-generator">Type Generator</a>
+<ul>
+<li><a href="#api-interface">API Interface</a></li>
+<li><a href="#curl-sample">CURL Sample</a></li>
+<li><a href="#java-sample">Java Sample</a></li>
+<li><a href="#python-sample">Python Sample</a></li>
+</ul>
+</li>
+<li><a href="#type-checker">Type Checker</a>
+<ul>
+<li><a href="#api-interface-1">API Interface</a></li>
+</ul>
+</li>
+<li><a href="#smartkube">SmartKube</a></li>
+</ul>
+</li>
+</ul>
+<h2 class="mume-header" id="dict_key-error-detector">&apos;Dict_key&apos; Error Detector</h2>
+
+<p>Analyze the &quot;dict_key&quot; error for Python functions.</p>
+<h3 class="mume-header" id="request">Request</h3>
+
+<ul>
+<li>Request URL: <a href="https://smart-scripts.org/py/smartModel">https://smart-scripts.org/py/smartModel</a></li>
+<li>Request Method: POST</li>
+<li>Request Payload: Source code to analyze.</li>
+</ul>
+<p>Sample request:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>curl  https://smart-scripts.org/py/smartModel \
+-X POST \
+-H &quot;Referer: https://smart-scripts.org/py/model&quot; \
+-H &quot;Content-Type: application/json&quot; \
+-d @request.json
+
+</code></pre><p>request.json:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>{&quot;code&quot;:&quot;\ndef _CheckGoogleSupportAnswerUrl(input_api, output_api):\n  pattern = input_api.re.compile(&apos;support\\.google\\.com\\/chrome.*/answer&apos;)\n  errors = []\n  for f in input_api.AffectedFiles():\n    for line_num, line in f.ChangedContents():\n      if pattern.search(line):\n        errors.append(&apos;    %s:%d %s&apos; % (f.LocalPath(), line_num, line))\n\n  results = []\n  if errors:\n    results.append(output_api.PresubmitPromptWarning(\n      &apos;Found Google support URL addressed by answer number. Please replace with &apos;\n      &apos;a p= identifier instead. See crbug.com/679462\\n&apos;, errors))\n  return results\n\n\ndef _CheckHardcodedGoogleHostsInLowerLayers(input_api, output_api):\n  def FilterFile(affected_file):\n    \&quot;\&quot;\&quot;Filter function for use with input_api.AffectedSourceFiles,\n    below.  This filters out everything except non-test files from\n    top-level directories that generally speaking should not hard-code\n    service URLs (e.g. src/android_webview/, src/content/ and others).\n    \&quot;\&quot;\&quot;\n    return input_api.FilterSourceFile(\n      affected_file,\n      white_list=(r&apos;^(android_webview|base|content|net)[\\\\\\/].*&apos;, ),\n      black_list=(_EXCLUDED_PATHS +\n                  _TEST_CODE_EXCLUDED_PATHS +\n                  input_api.DEFAULT_BLACK_LIST))\n\n  base_pattern = (&apos;\&quot;[^\&quot;]*(google|googleapis|googlezip|googledrive|appspot)&apos;\n                  &apos;\\.(com|net)[^\&quot;]*\&quot;&apos;)\n  comment_pattern = input_api.re.compile(&apos;//.*%s&apos; % base_pattern)\n  pattern = input_api.re.compile(base_pattern)\n  problems = []  # items are (filename, line_number, line)\n  for f in input_api.AffectedSourceFiles(FilterFile):\n    for line_num, line in f.ChangedContents():\n      if not comment_pattern.search(line) and pattern.search(line):\n        problems.append((f.LocalPath(), line_num, line))\n\n  if problems:\n    return [output_api.PresubmitPromptOrNotify(\n        &apos;Most layers below src/chrome/ should not hardcode service URLs.\\n&apos;\n        &apos;Are you sure this is correct?&apos;,\n        [&apos;  %s:%d:  %s&apos; % (\n            problem[0], problem[1], problem[2]) for problem in problems])]\n  else:\n    return []\n\n\ndef _CheckNoAbbreviationInPngFileName(input_api, output_api):\n  \&quot;\&quot;\&quot;Makes sure there are no abbreviations in the name of PNG files.\n  The native_client_sdk directory is excluded because it has auto-generated PNG\n  files for documentation.\n  \&quot;\&quot;\&quot;\n  errors = []\n  white_list = (r&apos;.*_[a-z]_.*\\.png$|.*_[a-z]\\.png$&apos;,)\n  black_list = (r&apos;^native_client_sdk[\\\\\\/]&apos;,)\n  file_filter = lambda f: input_api.FilterSourceFile(\n      f, white_list=white_list, black_list=black_list)\n  for f in input_api.AffectedFiles(include_deletes=False,\n                                   file_filter=file_filter):\n    errors.append(&apos;    %s&apos; % f.LocalPath())\n\n  results = []\n  if errors:\n    results.append(output_api.PresubmitError(\n        &apos;The name of PNG files should not have abbreviations. \\n&apos;\n        &apos;Use _hover.png, _center.png, instead of _h.png, _c.png.\\n&apos;\n        &apos;Contact oshima@chromium.org if you have questions.&apos;, errors))\n  return results\n\n\ndef _ExtractAddRulesFromParsedDeps(parsed_deps):\n  \&quot;\&quot;\&quot;Extract the rules that add dependencies from a parsed DEPS file.\n\n  Args:\n    parsed_deps: the locals dictionary from evaluating the DEPS file.\&quot;\&quot;\&quot;\n  add_rules = set()\n  add_rules.update([\n      rule[1:] for rule in parsed_deps.get(&apos;include_rules&apos;, [])\n      if rule.startswith(&apos;+&apos;) or rule.startswith(&apos;!&apos;)\n  ])\n  for specific_file, rules in parsed_deps.get(&apos;specific_include_rules&apos;,\n                                              {}).iteritems():\n    add_rules.update([\n        rule[1:] for rule in rules\n        if rule.startswith(&apos;+&apos;) or rule.startswith(&apos;!&apos;)\n    ])\n  return add_rules\n&quot;}
+
+</code></pre><h3 class="mume-header" id="response">Response</h3>
+
+<p>In JSON format, results can be found at <strong>issue</strong> field in JSON response.</p>
+<pre data-role="codeBlock" data-info class="language-"><code>{&quot;issues&quot;: &quot;Total Number of Function: 5\nThe function:_CheckGoogleSupportAnswerUrl(input_api, output_api) in uploaded source code has a \&quot;dict_key\&quot; error.\nThe function:_CheckHardcodedGoogleHostsInLowerLayers(input_api, output_api) in uploaded source code has a \&quot;dict_key\&quot; error.\nThe function:FilterFile(affected_file) in uploaded source code has a \&quot;dict_key\&quot; error.\nTotal bug count: 3\n&quot;}j
+
+</code></pre><h2 class="mume-header" id="type-generator">Type Generator</h2>
+
+<h3 class="mume-header" id="api-interface">API Interface</h3>
+
+<ul>
+<li>Request Method: POST</li>
+<li>Request URL: <a href="https://smart-scripts.org/py/TypeModel">https://smart-scripts.org/py/TypeModel</a></li>
+</ul>
+<p>Request Payload:<br>
+<strong>code</strong>: Source code to analyze.<br>
+<strong>model</strong>: integer value.</p>
+<ul>
+<li>0: 15 Base Types</li>
+<li>1: 500 Types Model</li>
+<li>2: PYI Model</li>
+</ul>
+<p><strong>Response</strong>:<br>
+A JSON String.<br>
+Fields:</p>
+<ul>
+<li><strong>result</strong>: Source code appended with annotations as comments.</li>
+<li><strong>issue</strong>: Model issues placed here. In Context Model, the inconsistency check results are included.</li>
+</ul>
+<h3 class="mume-header" id="curl-sample">CURL Sample</h3>
+
+<p><strong>Sample Requests</strong>:</p>
+<p>Normal Request:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>curl  https://smart-scripts.org/py/TypeModel \
+-X POST \
+-H &quot;Referer: https://smart-scripts.org/py/type&quot; \
+-H &quot;Content-Type: application/json&quot; \
+-d &apos;{&quot;code&quot;:&quot;category = \&quot;AST\&quot;\nsize = 3&quot;,&quot;model&quot;:0}&apos;
+</code></pre><p>Normal Response:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>{&quot;result&quot;: &quot;category = \&quot;AST\&quot; #  category:str - 0.4278 \nsize = 3 #  size:int - 0.4433 &quot;, &quot;issue&quot;: &quot;2 variables analyzed in 0.036 s, one variable at 17.762 ms&quot;}
+</code></pre><p>Request Contains Error:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>curl  https://smart-scripts.org/py/TypeModel \
+-X POST \
+-H &quot;Referer: https://smart-scripts.org/py/type&quot; \
+-H &quot;Content-Type: application/json&quot; \
+-d &apos;{&quot;code&quot;:&quot;category = \&quot;AST\&quot;\\nsize = 3&quot;,&quot;model&quot;:0}&apos;
+</code></pre><p>Error Response:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>{&quot;result&quot;: &quot;category = \&quot;AST\&quot;\\nsize = 3&quot;, &quot;issue&quot;: &quot;AST ERROR: unexpected character after line continuation character (&lt;unknown&gt;, line 1)&quot;}
+</code></pre><p>Request not in Json Format:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>curl  https://smart-scripts.org/py/TypeModel \
+-X POST \
+-H &quot;Referer: https://smart-scripts.org/py/type&quot; \
+-H &quot;Content-Type: application/json&quot; \
+-d &apos;code&quot;:&quot;category = \&quot;AST\&quot;\\nsize = 3&quot;,&quot;model&quot;:0&apos;
+</code></pre><p>Response is a HTML file:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>JSONDecodeError at /py/TypeModel
+Expecting value: line 1 column 1 (char 0)
+Request Method: POST
+Request URL:    https://smart-scripts.org/py/TypeModel
+Django Version: 2.2.3
+Exception Type: JSONDecodeError
+Exception Value:    
+Expecting value: line 1 column 1 (char 0)
+Exception Location: /usr/lib/python3.6/json/decoder.py in raw_decode, line 357
+Python Executable:  /usr/local/bin/uwsgi
+Python Version: 3.6.8
+...
+</code></pre><p>For larger Python Scripts, we can use:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>&gt;&gt;&gt; import json
+&gt;&gt;&gt; import os
+&gt;&gt;&gt; with open(&quot;test.py&quot;,&apos;r&apos;) as f:
+...   code = &quot;\n&quot;.join(f.readlines())
+...
+&gt;&gt;&gt; result = json.dumps({&apos;code&apos;: code, &apos;model&apos;:0})
+&gt;&gt;&gt; with open(&apos;result.json&apos;,&apos;w&apos;) as f:
+...   f.write(result)
+...
+&gt;&gt;&gt;
+</code></pre><p>Then, we can send request using:</p>
+<p>Request:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>curl  https://smart-scripts.org/py/TypeModel \
+-X POST \
+-H &quot;Referer: https://smart-scripts.org/py/type&quot; \
+-H &quot;Content-Type: application/json&quot; \
+-d @result.json
+</code></pre><h3 class="mume-header" id="java-sample">Java Sample</h3>
+
+<p>We can send a POST request using Java API.</p>
+<pre data-role="codeBlock" data-info class="language-"><code>import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import javax.net.ssl.HttpsURLConnection;
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Main http = new Main();
+        http.sendPost();
+    }
+    // HTTP POST REQUEST
+    private void sendPost() throws Exception {
+        String url = &quot;https://smart-scripts.org/py/TypeModel&quot;;
+        URL obj = new URL(url);
+        HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
+        con.setRequestMethod(&quot;POST&quot;);
+        con.setRequestProperty(&quot;Content-Type&quot;, &quot;application/json&quot;);
+        con.setRequestProperty(&quot;Referer&quot;, &quot;https://smart-scripts.org/py/type&quot;);
+        String urlParameters = &quot;{\&quot;code\&quot;:\&quot;category = \\\&quot;AST\\\&quot;\\nsize = 3\&quot;,\&quot;model\&quot;:0}&quot;;
+        //Send POST Request
+        con.setDoOutput(true);
+        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.writeBytes(urlParameters);
+        wr.flush();
+        wr.close();
+        int responseCode = con.getResponseCode();
+        System.out.println(&quot;\nSending &apos;POST&apos; request to URL : &quot; + url);
+        System.out.println(&quot;Post parameters : &quot; + urlParameters);
+        System.out.println(&quot;Response Code : &quot; + responseCode);
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+        System.out.println(response.toString());
+
+    }
+
+}
+
+</code></pre><p>Sample Response:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>Sending &apos;POST&apos; request to URL : https://smart-scripts.org/py/TypeModel
+Post parameters : {&quot;code&quot;:&quot;category = \&quot;AST\&quot;\nsize = 3&quot;,&quot;model&quot;:0}
+Response Code : 200
+{&quot;result&quot;: &quot;category = \&quot;AST\&quot; #  category:str - 0.4278 \nsize = 3 #  size:int - 0.4433 &quot;, &quot;issue&quot;: &quot;2 variables analyzed in 0.036 s, one variable at 18.159 ms&quot;}
+
+Process finished with exit code 0
+</code></pre><h3 class="mume-header" id="python-sample">Python Sample</h3>
+
+<p>Before we start, we have to install the <strong>request</strong> package for Python using the following command:</p>
+<blockquote>
+<p>pip install requests</p>
+</blockquote>
+<p>Python Sample code:</p>
+<pre data-role="codeBlock" data-info class="language-"><code># importing the requests library
+import requests
+import JSON
+
+def main():
+    # defining the api-endpoint
+    API_ENDPOINT = &quot;https://smart-scripts.org/py/TypeModel&quot;
+
+    # your source code here
+    source_code = &apos;&apos;&apos; 
+category = &quot;AST&quot;
+size = 3
+    &apos;&apos;&apos;
+
+    # data to be sent to api
+    data = {&apos;code&apos;: source_code,
+            &apos;model&apos;: 0}
+    headers = {&quot;Referer&quot;: &quot;https://smart-scripts.org/py/type&quot;,
+               &quot;Content-Type&quot;: &quot;application/json&quot;}
+    # sending post request and saving response as response object
+    r = requests.post(url=API_ENDPOINT,headers = headers , data=json.dumps(data))
+
+    # extracting response text
+    resp = r.text
+    print(resp)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+
+</code></pre><p>Sample Response:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>{&quot;result&quot;: &quot; \ncategory = \&quot;AST\&quot; #  category:str - 0.4278 \nsize = 3 #  size:int - 0.4433 \n    &quot;, &quot;issue&quot;: &quot;2 variables analyzed in 0.036 s, one variable at 17.88 ms&quot;}
+
+</code></pre><h2 class="mume-header" id="type-checker">Type Checker</h2>
+
+<p>Infer type and check type inconsistencies.</p>
+<h3 class="mume-header" id="api-interface-1">API Interface</h3>
+
+<ul>
+<li>
+<p>Request Method: POST</p>
+</li>
+<li>
+<p>Request URL: <a href="https://smart-scripts.org/py/TypeModel">https://smart-scripts.org/py/TypeModel</a></p>
+</li>
+<li>
+<p>Request Payload:<br>
+<strong>code</strong>: Source code to analyze.<br>
+<strong>model</strong>: integer value.</p>
+</li>
+<li>
+<p>3: Context Model with type inconsistency detection. Time consumption high depends on the length of the code.</p>
+</li>
+<li>
+<p>4: 15 Base Types with type inconsistency detection.</p>
+</li>
+</ul>
+<p><strong>Response</strong>:<br>
+A JSON String.<br>
+Fields:</p>
+<ul>
+<li><strong>result</strong>: Source code appended with annotations as comments.</li>
+<li><strong>issue</strong>: The inconsistency check results and time consumption information are included in this field.</li>
+</ul>
+<h2 class="mume-header" id="smartkube">SmartKube</h2>
+
+<ul>
+<li>
+<p>Request URL: <a href="https://smart-scripts.org/py/kubeModel">https://smart-scripts.org/py/kubeModel</a></p>
+</li>
+<li>
+<p>Request Method: POST</p>
+</li>
+<li>
+<p>Request Payload:<br>
+The <strong>code</strong> field contains the Kubernetes code to check.</p>
+</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>{&quot;code&quot;:&quot;apiVersion: v1\nkind: Deployment\nmetadata:\n  name: admin-user\n  namespace: kubernetes-dashboard\n\n---\napiVersion: rbac.authorization.k8s.io/v1\nkind: ClusterRoleBinding\nmetadata:\n  name: admin-user\nroleRef:\n  apiGroup: rbac.authorization.k8s.io\n  kind: ClusterRole\n  name: cluster-admin\nsubjects:\n- kind: ServiceAccount\n  name: admin-user\n  namespace: kubernetes-dashboard\n\n---\napiVersion: extensions/v1beta1\nkind: Deployment\nmetadata:\n  name: redis\nspec:\n  replicas: \&quot;2\&quot;\n  selector:\n    name: redis\n  template:\n    metadata:\n      labels:\n        name: redis\n    spec:\n      containers:\n      - name: redis\n        image: kubernetes/redis:v1\n        ports:\n        - containerPort: 6379\n        resources:\n          limits:\n            cpu: \&quot;0.1\&quot;\n        volumeMounts:\n        - mountPath: /redis-master-data\n          name: data\n      volumes:\n        - name: data\n          emptyDir: {}&quot;}
+
+</code></pre><ul>
+<li>Sample Response:<br>
+Result is in json format. The <strong>issue</strong> field contains the result of checking kubernetes in HTML format.</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>{&quot;issues&quot;: &quot;&lt;font color=\&quot;yellow\&quot;&gt;Warnings&lt;/font&gt; for Document Starting from line 21 to 48:\nIncorrect Type &lt;font color=\&quot;yellow\&quot;&gt;Warning&lt;/font&gt;: expect one of { &apos;int&apos;,  &apos;NoneType&apos;}, but got  &apos;str&apos; for \&quot;apiVersion(extensions/v1beta1)/kind(Deployment)/spec/replicas\&quot;\nMissing Entry &lt;font color=\&quot;yellow\&quot;&gt;Warning&lt;/font&gt;: expect \&quot;apiVersion(extensions/v1beta1)/kind(Deployment)/spec/selector/matchLabels\&quot; when \&quot;apiVersion(extensions/v1beta1)/kind(Deployment)/spec/selector\&quot; presents\n&lt;font color=\&quot;#00bfff\&quot;&gt;Finish!&lt;/font&gt;\n&quot;}
+
+</code></pre>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

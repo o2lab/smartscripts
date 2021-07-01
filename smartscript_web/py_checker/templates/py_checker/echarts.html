@@ -1,0 +1,132 @@
+
+
+    {% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164875144-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-164875144-1');
+</script>
+
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+   <input id="selectall" type="button" class="btn btn-primary" value="Select None" />
+       <div align="center" id="container" style="height: 100%"></div>
+       <script src="{% static 'py_checker/js/echarts.min.js' %}"></script>
+       <script src="{% static 'py_checker/js/dark.js' %}"></script>
+       <script src="{% static 'py_checker/js/shine.js' %}"></script>
+       <!-- <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script> -->
+       <!-- <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script> -->
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom,'dark');
+var app = {};
+option = null;
+option = {
+    title : {
+        text: 'Database Information',
+        subtext: 'SmartScripts.org',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        type: 'scroll',
+        orient: 'vertical',
+        // left: 'right',
+        right: 30,
+        top: 50,
+        bottom: 50,
+        data: ['dependent_code', 'top_k_code', 'Kubernetes_yaml', 'dict_key', 'format_string', 'Kubernetes_yml', 'real_bug', 'yaml_real_bug', 'json_real_bug', 'dockerfile', 'pytype_labelled', 'dependent_code_v2', 'gitlabSK8sYAML', 'gitlabKubernetesYAML', 'gitlabSK8sYML', 'gitlabKubernetesYML', 'gitlabAPIVersionYML', 'gitlabAPIVersionK8s', 'gitlabAPIVersionYAML', 'gitlabAPIVersionKubernetes', 'pysonar_labelled2', 'pysonar_code', 'pysonar_labelled4'
+    ]
+    },
+    series : [
+        {
+            name: 'Dataset Information',
+            type: 'pie',
+            radius : '55%',
+            center: ['50%', '60%'],
+            data:[{value: 0 , name:'dependent_code'},
+{value: 191808 , name:'top_k_code'},
+{value: 4873 , name:'Kubernetes_yaml'},
+{value: 8738 , name:'dict_key'},
+{value: 26509 , name:'format_string'},
+{value: 952 , name:'Kubernetes_yml'},
+{value: 48247 , name:'real_bug'},
+{value: 758 , name:'yaml_real_bug'},
+{value: 536 , name:'json_real_bug'},
+{value: 171257 , name:'dockerfile'},
+{value: 79 , name:'pytype_labelled'},
+{value: 153224 , name:'dependent_code_v2'},
+{value: 39 , name:'gitlabSK8sYAML'},
+{value: 149 , name:'gitlabKubernetesYAML'},
+{value: 16 , name:'gitlabSK8sYML'},
+{value: 74 , name:'gitlabKubernetesYML'},
+{value: 26 , name:'gitlabAPIVersionYML'},
+{value: 35 , name:'gitlabAPIVersionK8s'},
+{value: 134 , name:'gitlabAPIVersionYAML'},
+{value: 61 , name:'gitlabAPIVersionKubernetes'},
+{value: 52861055 , name:'pysonar_labelled2'},
+{value: 320402 , name:'pysonar_code'},
+{value: 77089946 , name:'pysonar_labelled4'},
+
+    ],
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+
+    var selectArr = myChart.getOption().legend[0].data;
+        
+        $('#selectall').click(function(){
+            var flag = $(this).attr('flag');
+            if(flag == 1){
+                var val = true;
+                $(this).attr('flag',0);
+                $(this).val('Select None');
+            }else{
+                var val = false;
+                $(this).attr('flag',1);
+                $(this).val('Select All');
+            }
+            var obj = {};
+            for(var key in selectArr){
+                obj[selectArr[key]] = val;
+            }    
+            option.legend.selected = obj;
+            myChart.setOption(option);
+        });
+
+       </script>
+   </body>
+</html>

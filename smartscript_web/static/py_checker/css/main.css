@@ -1,0 +1,241 @@
+/*
+ * Globals
+ */
+
+/* Links */
+a,
+a:focus,
+a:hover {
+    color: #fff;
+}
+
+/* Custom default button */
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+    color: #333;
+    text-shadow: none; /* Prevent inheritance from `body` */
+    background-color: #fff;
+    border: .05rem solid #fff;
+}
+
+button:focus {
+    outline: none;
+}
+
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: #222;
+    border: none;
+    border-bottom: 2px solid #cccccc66;
+}
+
+.list-group-item:last-child {
+    margin-bottom: 0;
+    border-bottom-right-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+    border-bottom: none;
+}
+
+.list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #444;
+    border: 2px solid rgba(160, 160, 160, 0.4);
+}
+
+.list-group-item-action {
+    width: 100%;
+    color: #eee;
+    text-align: inherit;
+}
+
+/*
+ * Base structure
+ */
+
+html,
+body {
+    height: 100%;
+    background-color: #333;
+    /*background-image: url("../images/bg.gif");*/
+    /*background-size: contain;*/
+    /*-webkit-transform: rotate(30deg);*/
+    /*-moz-transform: rotate(30deg);*/
+    /*-ms-transform: rotate(30deg);*/
+    /*-o-transform: rotate(30deg);*/
+    /*transform: rotate(30deg);*/
+}
+
+body {
+    display: -ms-flexbox;
+    display: flex;
+    color: #fff;
+    text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+    /*box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);*/
+}
+
+.cover-container {
+    max-width: 90em;
+}
+
+
+/*
+ * Header
+ */
+.masthead {
+    margin-bottom: 2rem;
+}
+
+.masthead-brand {
+    margin-bottom: 0;
+}
+
+.nav-masthead .nav-link {
+    padding: .25rem 0;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 1.0);
+    background-color: transparent;
+    border-bottom: .25rem solid transparent;
+}
+
+/*.nav-masthead .nav-link:focus*/
+.nav-masthead .nav-link:hover{
+    border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+.nav-masthead .nav-link + .nav-link {
+    margin-left: 1rem;
+}
+
+.nav-masthead .active {
+    color: #fff;
+    border-bottom-color: #fff;
+}
+
+@media (min-width: 48em) {
+    .masthead-brand {
+        float: left;
+    }
+
+    .nav-masthead {
+        float: right;
+    }
+}
+
+
+/*
+ * Cover
+ */
+.cover {
+    padding: 0 1.5rem;
+}
+
+.cover .btn-lg {
+    padding: .75rem 1.25rem;
+    font-weight: 700;
+}
+
+
+/*
+ * Footer
+ */
+.mastfoot {
+    color: rgba(255, 255, 255, .5);
+}
+
+/*
+ * sidebar
+ */
+.sidebar {
+    margin-bottom: auto;
+    margin-top: 1em;
+    /*color: #eee;*/
+    /*border: 1px solid rgba(0, 0, 0, 0.5);*/
+    /*background-color: #111;*/
+    /*!*border-bottom: none;*!*/
+    /*box-shadow: 0px 3px 8px 4px black;*/
+    /*text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);*/
+}
+
+/*
+ *
+ */
+.editor {
+    /*width: 100%;*/
+    height: 600px;
+    border:1px solid black;
+    margin:auto;
+    box-shadow: 0px 3px 6px 3px black;
+}
+
+.terminal-border {
+    position: relative;
+    color: #eee;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    background-color: #111;
+    /*border-bottom: none;*/
+    box-shadow: 0px 3px 8px 4px black;
+    text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+    text-align: center;
+    font-size: large;
+}
+
+.shadow-textarea {
+    white-space: pre-wrap;  /* preserve new line */
+    color: #ddd;
+    z-index: -1;
+    padding-left: 0.8rem;
+    padding-top: 0.5rem;
+    border: 1px solid black;
+    border-top: none;
+    box-shadow: 0px 3px 6px 3px black;
+    background-color: #222;
+}
+
+.lineno {
+    color: #0097fb;
+    text-decoration: underline;
+    text-decoration-color: #0097fb;
+}
+
+.lineno:hover {
+    color: blue;
+    text-decoration: underline;
+    text-decoration-color: blue;
+}
+
+.lineno-visited {
+    color: mediumslateblue;
+    text-decoration: none;
+}
+
+
+.dropdown-menu{
+    background-color: #222 !important;
+
+}
+
+.dropdown-item.active {
+    background-color: #444 !important;
+}
+
+.dropdown-item:focus,.dropdown-item:hover {
+    background-color: #444 !important;
+}
+
+#navbarDropdownMenuLink{
+    font-size: 1.25rem;
+    font-weight: 450;
+}
+
+
+.dropdown-item {
+    color: #fff !important;
+    font-size: 1rem;
+    font-weight: 400;
+}

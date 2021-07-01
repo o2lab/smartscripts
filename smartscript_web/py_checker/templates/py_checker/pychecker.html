@@ -1,0 +1,250 @@
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164875144-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-164875144-1');
+</script>
+
+{#    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">#}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes">
+    <link rel="stylesheet" href="{% static 'py_checker/css/main.css' %}">
+    
+    <link rel="stylesheet" data-name="vs/editor/editor.main"
+          href="{% static 'py_checker/monaco/min/vs/editor/editor.main.css' %}">
+    <title>SmartScript</title>
+</head>
+
+
+<body>
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+
+    <header class="masthead " style="margin-top: -1rem"> 
+            <!-- mb-auto -->
+        <div class="inner">
+            <!-- <h3 class="masthead-brand">SmartScript</h3> -->
+            <nav class="navbar navbar-expand-sm d-flex justify-content-between">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            <h3 class="masthead-brand">
+                <img style="height: 5rem;margin-top: 0.6rem;" src="{% static 'py_checker/images/tamu-svg.svg' %}" alt="Texas A&M University">
+            </h3>
+            <!-- We now have <h3 class="timer count-title" id="count-number" data-to="398447" data-speed="1000"></h3> documents in our<a href="https://db.smart-scripts.org/dbApp">Bug Database.</a> Please visit the visualization <a href="https://smart-scripts.org/py/echarts">here.</a> -->
+            
+            <!-- <nav class="nav nav-masthead justify-content-center"> -->
+                <!-- <a class="nav-link active" href="#">Home</a> -->
+                <!-- <div class="collapse navbar-collapse" id="navbarNavDropdown"> -->
+            <ul class="navbar-nav float-right"> 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Sample Programs
+                                </a>
+                    <div id="examples" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        
+                        <a class="dropdown-item " href="#"  data-id="1">Incorrect format string</a>
+                        <a class="dropdown-item" href="#" data-id="2">Incosistent data dependency</a>
+                        <a class="dropdown-item" href="#"  data-id="3">Unmatched key-value</a>
+                        <a class="dropdown-item" href="#"  data-id="4">Missing entry</a>
+                    </div>
+           
+
+                <!-- <a class="nav-link" href="#">About</a> -->
+                
+                </li>
+            </ul>
+    <!-- </div> -->
+        </nav>
+        </div>
+    </header>
+
+
+    <main role="main" class="row inner cover" style="margin-top: -2rem">
+        <!-- <div class="col-2 sidebar">
+            <div id="examples" class="list-group">
+                <button type="button" class="list-group-item list-group-item-action active" data-id="1">Incorrect format string</button>
+                <button type="button" class="list-group-item list-group-item-action" data-id="2">Misuse of variables</button>
+                <button type="button" class="list-group-item list-group-item-action" data-id="3">Unmatched key-value</button>
+            </div>
+        </div> -->
+        <div class="col-12">
+            <p class="lead">
+                {% csrf_token %}
+            <div id="container" class="editor"></div>
+            </p>
+            <p class="lead text-center">
+{#                <div class="btn-group">#}
+{#                    <button type="button" class="btn btn-info btn-sm dropdown-toggle"#}
+{#                            data-toggle="dropdown">#}
+{#                        Run Code <span class="caret"></span>#}
+{#                    </button>#}
+{#                    <ul class="dropdown-menu" role="menu">#}
+{#                        <li> <a href=”javascript:void(0);” onclick="runCode(0);">Run Buggy Code</a></li>#}
+{#                        <li> <a href=”javascript:void(0);” onclick="runCode(1);">Run Fixed Code</a></li>#}
+{#                    </ul>#}
+{#                </div>#}
+
+                <button type="button" class="btn btn-info btn-sm" onclick="runCode(0);">Run Buggy Code</button>
+                <button type="button" class="btn btn-info btn-sm" onclick="runCode(1);">Run Fixed Code</button>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="checkCode();">Python Linter</button>
+                <button type="button" class="btn btn-success btn-sm" onclick="smartScript();">SmartScript AI</button>
+            </p>
+            <p class="lead text-center">
+            <div class="terminal-border">Analysis Results</div>
+            <div id="output" class="shadow-textarea" style="width: 100%; min-height: 50px"></div>
+            </p>
+        </div>
+    </main>
+
+</div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- <script src="{% static 'py_checker/js/axios.min.js' %}"></script> -->
+<script>
+    var require = {paths: {'vs': "{% static 'py_checker/monaco/min/vs' %}"}};
+</script>
+<script src="{% static 'py_checker/monaco/min/vs/loader.js' %}"></script>
+<script src="{% static 'py_checker/monaco/min/vs/editor/editor.main.nls.js' %}"></script>
+<script src="{% static 'py_checker/monaco/min/vs/editor/editor.main.js' %}"></script>
+<script src="{% static 'py_checker/js/index.js' %}"></script>
+    <script src="{% static 'py_checker/js/jquery.js' %}"></script>
+<script>
+    //var editor = monaco.editor.create(document.getElementById('container'), {
+    //    value: "def hello():\n  print('hello world')\n",
+    //    language: 'python',
+    //    theme: 'vs-dark'
+    //});
+    var bugModel = monaco.editor.createModel("Welcome to use the SmartScript!\nPlease select the code on the left to proceed. \n", 'python')
+    var fixModel = monaco.editor.createModel("", 'python')
+    var editor = monaco.editor.createDiffEditor(document.getElementById('container'),
+        {
+            // language: 'YAML',
+            theme: 'vs-dark',
+            automaticLayout: true,
+            scrollBeyondLastLine: false,
+            {#enableSplitViewResizing: true,#}
+        });
+    editor.setModel({
+        original: bugModel,
+        modified: fixModel
+    });
+    //var decorations = editor.deltaDecorations([], [
+    //    {}
+    //]);
+    let examplesButtons = document.getElementById('examples').getElementsByTagName('a');
+    for (let i = 0; i < examplesButtons.length; ++i) {
+        examplesButtons[i].onclick = function () {
+            for (let j = 0; j < examplesButtons.length; ++j) {
+                examplesButtons[j].classList.remove('active');
+            }
+            examplesButtons[i].classList.add('active');
+
+            // get data from serverulimit -c 67108864
+            axios.get('sampleCode?id='+examplesButtons[i].dataset.id).then( response => {
+                let buggyCode = response.data['buggy'];
+                let fixCode = response.data['fix'];
+                let numline = Math.max((buggyCode.split("\n").length),(fixCode.split("\n").length))
+                console.log(numline)
+                // document.getElementById('container').style.marginTop="0px"
+                if(numline<25){
+                    document.getElementById('container').style.height="400px"
+                }else if(numline<40){
+                    document.getElementById('container').style.height="500px"
+                }else{
+                    document.getElementById('container').style.height="600px"
+                }
+                bugModel.setValue(buggyCode);
+                fixModel.setValue(fixCode);
+                editor.setModelLanguage(bugModel, response.data['language']);
+                editor.setModelLanguage(fixModel, response.data['language']);
+            }).catch(err => console.log(err.message))
+        }
+    }
+
+
+    function checkCode() {
+        update("running Python Linter...")
+        axios.post('check', {
+            code: bugModel.getValue()
+        }).then(response => {
+            update(response.data['issues'])
+        }).catch(err => console.log(err.message))
+    }
+    
+    function smartScript() {
+        update("running SmartScript...")
+        axios.post('smartScript', {
+            code: bugModel.getValue()
+        }).then(response => {
+            update(response.data['issues'])
+        }).catch(err => console.log(err.message))
+    }
+    function runCode(id) {
+        if(id==1){
+            update("running fixed code...")
+            axios.post('runCode', {
+            code: fixModel.getValue(),
+            type: "fixed.py"
+            }).then(response => {
+                update(response.data['issues'])
+            }).catch(err => console.log(err.message))
+        }else{
+            update("running buggy code...")
+            axios.post('runCode', {
+            code: bugModel.getValue(),
+            type: "buggy.py"
+            }).then(response => {
+                update(response.data['issues'])
+            }).catch(err => console.log(err.message))
+
+        }
+
+    }
+    function update(issues) {
+        let textarea = document.getElementById('output');
+        textarea.innerHTML = issues;
+        let issuesLinks = textarea.getElementsByTagName('a');
+        for (let i = 0; i < issuesLinks.length; ++i) {
+            let issueLink = issuesLinks[i];
+            const lineno = Number(issueLink.innerText.split(':')[1]);
+            issueLink.onclick = function () {
+                // editor.revealLineInCenterIfOutsideViewport(lineno);
+                bugModel.revealLineInCenterIfOutsideViewport(lineno);
+                issueLink.classList.add('lineno-visited');
+                return true;
+            };
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        examplesButtons[0].click();
+    }, false);
+
+    /*function update(issues) {
+        let table = document.getElementById('issues-table').getElementsByTagName('tbody')[0];
+        table.innerHTML = '';  // clear previous
+        issues.forEach((issue,index) => {
+            let row = table.insertRow(table.rows.length);
+            row.innerHTML = '<tr><th scope="row">' + index + '</th>' +
+                    '<td>' + issue[0] + '</td>' +
+                    '<td>' + issue[1] + '</td>' +
+                    '<td>Line: ' + issue[2] + '. ' + issue[3] + '</td></tr>'
+            const lineno = Number(issue[2]);
+            row.onclick = function () {
+                editor.revealLineInCenterIfOutsideViewport(lineno);
+            };
+        });
+    }*/
+</script>
+</body>
+</html>

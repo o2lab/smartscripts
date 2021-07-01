@@ -1,0 +1,17 @@
+{
+  "persons": [
+    {
+      "Gender": "male",
+      "name": "Tim",
+      "address": "400 Bizzell St, College Station, TX 77843"
+    },
+    {
+      "Gender": "male",
+      "name": "David"
+    },
+    {
+      "Gender": "female",
+      "address": "400 Bizzell St, College Station, TX 77843"
+    }
+  ]
+}

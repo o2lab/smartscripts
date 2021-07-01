@@ -1,0 +1,216 @@
+
+    {% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://getbootstrap.com/docs/4.0/examples/cover/# -->
+<html lang="en" class="gr__getbootstrap_com">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164875144-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-164875144-1');
+    </script>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link rel="icon" href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico"> -->
+
+    <title>SmartScripts</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'py_checker/css/main.css' %}">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'py_checker/css/cover.css' %}" rel="stylesheet">
+    
+  </head>
+
+  <body class="text-center" data-gr-c-s-loaded="true">
+
+    <div class="cover-container d-flex w-500 h-100 p-3 mx-auto flex-column">
+        <header class="masthead mb-auto">
+          <div class="inner">
+            <!-- <h3 class="masthead-brand">SmartScripts</h3> -->
+            <nav class="nav nav-masthead justify-content-center">
+              <a class="nav-link active" href="https://smart-scripts.org">Home</a>
+              <!-- <a class="nav-link" href="https://smart-scripts.org/py/echarts">Pie Chart</a> -->
+              <!-- <a class="nav-link" href="https://smart-scripts.org/py/linecharts">Line Stack</a> -->
+              <!-- <a class="nav-link" href="https://db.smart-scripts.org/dbApp">Data Manager</a> -->
+              <a class="nav-link" href="https://smart-scripts.org/py/model">'Dict_key' Error Detector </a>
+              <a class="nav-link" href="https://smart-scripts.org/py/typeGenerator">TypeGenerator</a>
+              <a class="nav-link " href="https://smart-scripts.org/py/typeChecker">SmartScripts AI</a>
+              <a class="nav-link" href="https://smart-scripts.org/py/smartkube">SmartKube</a>
+              <a class="nav-link" href="https://smart-scripts.org/static/py_checker/clcheck/">CLcheck</a>
+              <!-- <a class="nav-link" href="https://smart-scripts.org:8000/?folder=/home/coder/project">SmartDocker</a> -->
+              <!-- <a class="nav-link" href="https://smart-scripts.org/py/Report">Bug Reports</a> -->
+              <a class="nav-link" href="https://smart-scripts.org/py/API">API</a>
+              <a class="nav-link" href="https://smart-scripts.org/py/Report">Bug Reports: <font color="springgreen">12</font>   real bugs </a>
+            </nav>
+          </div>
+        </header>
+    <!-- </div> -->
+
+    <!-- <div class="cover-container d-flex h-100 p-3 mx-auto flex-column"> -->
+ 
+      <main role="main" class="inner cover">
+        <h1 class="cover-heading" style="font-size: 100px"><label style="color: springgreen;">Smart</label>Scripts</h1>
+        <p class="lead" style="font-size: 30px">An AI-based Approach to Detecting Semantic and Type Inconsistency Errors in Dynamic Scripts</p>
+
+        <div id = "count-down">
+        <p style="font-size: 25px">
+        We now have 48,247 real bug collection, 130,271,403‬ training annotations, and more. Totally,</p>
+       
+        <h3 style="font-size: 40px;color:springgreen" class="timer count-title" id="count-number" data-to="0" data-speed="1000"></h3> 
+        
+
+        
+        <p style="font-size: 25px"> documents in our <a href="https://db.smart-scripts.org/dbApp"><b>Bug Database.</b></a> Please visit the  <a href="https://smart-scripts.org/py/echarts"><b>pie-chart</b></a> and the  <a href="https://smart-scripts.org/py/linecharts"><b>line-stack</b></a>.
+      </p>
+    </div>
+
+
+
+        <p> </p>
+        <p class="lead">
+          <a href="https://smart-scripts.org/py/pychecker" class="btn btn-lg btn-secondary">Demo</a>
+        </p>
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Copyright@ <a href="https://tamu.edu/">TAMU</a>, by <a href="https://o2lab.github.io/">O2Lab</a>.</p>
+          <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=00ff7f&w=200&t=n&d=Jqa7miJg9wnTY3Y7iq0r_r_JM9waCb06_DR8Gu0xgCk&co=333&cmn=fff500'></script>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="{% static 'py_checker/js/jquery-3.2.1.slim.min.js' %}"></script>
+    
+    <script src="{% static 'py_checker/js/bootstrap.min.js' %}"></script>
+   
+    <script src="{% static 'py_checker/js/jquery.js' %}"></script>
+    <!-- <script src="./Cover Template for Bootstrap_files/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    <!-- <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script> -->
+    <!-- <script src="./Cover Template for Bootstrap_files/popper.min.js"></script> -->
+    <!-- <script src="./Cover Template for Bootstrap_files/bootstrap.min.js"></script> -->
+
+    <script>
+    // console.log(0)
+      function getCnt(){
+        let textarea = document.getElementById('count-number');
+        axios.get('datacnt').then(response => {
+          textarea.dataset.to = response.data['issues']
+              // update(response.data['issues'])
+              console.log(response.data['issues'])
+
+
+              $.fn.countTo = function(a) {
+                  a = a || {};
+                  return $(this).each(function() {
+                      var c = $.extend({},
+                      $.fn.countTo.defaults, {
+                          from: $(this).data("from"),
+                          to: $(this).data("to"),
+                          speed: $(this).data("speed"),
+                          refreshInterval: $(this).data("refresh-interval"),
+                          decimals: $(this).data("decimals")
+                      },
+                      a);
+                      var h = Math.ceil(c.speed / c.refreshInterval),
+                      i = (c.to - c.from) / h;
+                      var j = this,
+                      f = $(this),
+                      e = 0,
+                      g = c.from,
+                      d = f.data("countTo") || {};
+                      f.data("countTo", d);
+                      if (d.interval) {
+                          clearInterval(d.interval)
+                      }
+                      d.interval = setInterval(k, c.refreshInterval);
+                      b(g);
+                      function k() {
+                          g += i;
+                          e++;
+                          b(g);
+                          if (typeof(c.onUpdate) == "function") {
+                              c.onUpdate.call(j, g)
+                          }
+                          if (e >= h) {
+                              f.removeData("countTo");
+                              clearInterval(d.interval);
+                              g = c.to;
+                              if (typeof(c.onComplete) == "function") {
+                                  c.onComplete.call(j, g)
+                              }
+                          }
+                      }
+                      function b(m) {
+                          var l = c.formatter.call(j, m, c);
+                          f.html(l)
+                      }
+                  })
+              };
+              $.fn.countTo.defaults = {
+                  from: 0,
+                  to: 0,
+                  speed: 1000,
+                  refreshInterval: 100,
+                  decimals: 0,
+                  formatter: formatter,
+                  onUpdate: null,
+                  onComplete: null
+              };
+              function formatter(b, a) {
+                  return b.toFixed(0)
+              }
+              $("#count-number").data("countToOptions", {
+                  formatter: function(b, a) {
+                      return b.toFixed(0).replace(/\B(?=(?:\d{3})+(?!\d))/g, ",")
+                  }
+              });
+              $(".timer").each(count);
+              function count(a) {
+                  var b = $(this);
+                  a = $.extend({},
+                  a || {},
+                  b.data("countToOptions") || {});
+                  b.countTo(a)
+              };
+
+
+
+          }).catch(err => console.log(err.message))
+          // return response.data['issues']
+      }
+      getCnt()
+      
+  
+  </script>
+
+    </div>
+  
+    
+  </body>
+    <!-- <script>console.log(1)</script> -->
+    <script src="{% static 'py_checker/js/popper.min.js' %}"></script>
+<!-- <script src="{% static 'py_checker/js/index.js' %}"></script> -->
+    
+    
+    </html>
+
+    

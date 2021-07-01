@@ -1,0 +1,84 @@
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div align="center" id="container" style="height: 100%"></div>
+       <script src="{% static 'py_checker/js/echarts.min.js' %}"></script>
+       <script src="{% static 'py_checker/js/dark.js' %}"></script>
+       <script src="{% static 'py_checker/js/shine.js' %}"></script>
+       <!-- <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script> -->
+       <!-- <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script> -->
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom,'dark');
+var app = {};
+option = null;
+option = {
+    title : {
+        text: 'Database Information',
+        subtext: 'SmartScripts.org',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        type: 'scroll',
+        orient: 'vertical',
+        // left: 'right',
+        right: 30,
+        top: 50,
+        bottom: 50,
+        data: ['dependent_code', 'pkg_dependents', 'top_k_code', 'yaml_real_bug', 'json_real_bug', 'Kubernetes_yaml', 'dockerfile', 'real_bug', 'Kubernetes_yml', 'dict_key', 'format_string']
+    },
+    series : [
+        {
+            name: 'Dataset Information',
+            type: 'pie',
+            radius : '55%',
+            center: ['50%', '60%'],
+            data:[
+                {value: 147405 , name:'dependent_code'},
+                {value: 17 , name:'pkg_dependents'},
+                {value: 191808 , name:'top_k_code'},
+                {value: 758 , name:'yaml_real_bug'},
+                {value: 536 , name:'json_real_bug'},
+                {value: 4873 , name:'Kubernetes_yaml'},
+                {value: 11542 , name:'dockerfile'},
+                {value: 5309 , name:'real_bug'},
+                {value: 952 , name:'Kubernetes_yml'},
+                {value: 8738 , name:'dict_key'},
+                {value: 26509 , name:'format_string'}
+            ],
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>

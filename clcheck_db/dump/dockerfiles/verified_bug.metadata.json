@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"dockerfiles.verified_bug"}],"uuid":"a292484e0db94934b6226115069b28b0","collectionName":"verified_bug"}

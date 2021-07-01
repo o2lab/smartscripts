@@ -1,0 +1,1062 @@
+<!DOCTYPE html><html><head>
+      <title>res_no_test</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="bug-report">Bug Report</h1>
+
+<p>Total number of potential bugs: 49<br>
+After filtering out <strong>test</strong> and duplicates: 24</p>
+<ul>
+<li><a href="#bug-report">Bug Report</a>
+<ul>
+<li><a href="#argument-sequence-doesnt-matter-4">Argument sequence doesn&apos;t matter - 4</a></li>
+<li><a href="#constant-usages-2">Constant Usages - 2</a></li>
+<li><a href="#built-in-functions-added-to-filter-4">Built-in Functions (Added to filter) - 4</a></li>
+<li><a href="#the-quality-of-embeddings-7">The Quality of Embeddings - 7</a></li>
+<li><a href="#function-def-can-help-5">Function Def can help - 5</a></li>
+<li><a href="#due-to-different-functionality-1">Due to different functionality - 1</a></li>
+<li><a href="#different-def-with-different-args-1">Different Def with different args - 1</a></li>
+</ul>
+</li>
+</ul>
+<h2 class="mume-header" id="argument-sequence-doesnt-matter-4">Argument sequence doesn&apos;t matter - 4</h2>
+
+<ul>
+<li>Function: <strong>update_info</strong><br>
+./Workspace/vt-vl-lab/3d-photo-inpainting/mesh_tools.py<br>
+File: <a href="https://github.com/vt-vl-lab/3d-photo-inpainting/blob/master/mesh_tools.py#L835">https://github.com/vt-vl-lab/3d-photo-inpainting/blob/master/mesh_tools.py#L835</a><br>
+Args: [&apos;mapping_dict&apos;, &apos;info_on_pix&apos;, &apos;<strong>edge_mesh</strong>&apos;, &apos;<strong>mesh</strong>&apos;] (&apos;./Workspace/vt-vl-lab/3d-photo-inpainting/mesh_tools.py&apos;, 835, 43)<br>
+ArgPosi: [2, 3]<br>
+Confidence: 8.059827578362535</li>
+</ul>
+<p>No FunctionDef Found</p>
+<pre data-role="codeBlock" data-info class="language-"><code>831             except:
+832                 re_depth = node[2]
+833             re_node = (node_xy[0], node_xy[1], re_depth)
+834             mapping_dict = {node: re_node}
+835             info_on_pix, edge_mesh, mesh = update_info(mapping_dict, info_on_pix, edge_mesh, mesh)
+836 
+837             edge_mesh, mesh, mark, info_on_pix = recursive_add_edge(edge_mesh, mesh, info_on_pix, re_node, mark)
+838 
+839     return edge_mesh, mesh, mark, info_on_pix
+840 
+</code></pre><p>Number of FunctionUsage: 8<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;mapping_dict&apos;, &apos;info_on_pix&apos;, &apos;mesh&apos;, &apos;edge_mesh&apos;], &apos;./Workspace/vt-vl-lab/3d-photo-inpainting/mesh.py&apos;, 806, 39)
+([&apos;mapping_dict&apos;, &apos;info_on_pix&apos;, &apos;mesh&apos;, &apos;edge_mesh&apos;], &apos;./Workspace/vt-vl-lab/3d-photo-inpainting/mesh.py&apos;, 835, 39)
+([&apos;mapping_dict&apos;, &apos;info_on_pix&apos;, &apos;mesh&apos;, &apos;edge_mesh&apos;], &apos;./Workspace/vt-vl-lab/3d-photo-inpainting/mesh.py&apos;, 874, 43)
+([&apos;mapping_dict&apos;, &apos;info_on_pix&apos;, &apos;mesh&apos;, &apos;edge_mesh&apos;], &apos;./Workspace/vt-vl-lab/3d-photo-inpainting/mesh.py&apos;, 897, 51)
+([&apos;mapping_dict&apos;, &apos;info_on_pix&apos;, &apos;edge_mesh&apos;, &apos;mesh&apos;], &apos;./Workspace/vt-vl-lab/3d-photo-inpainting/mesh_tools.py&apos;, 835, 43)
+</code></pre><ul>
+<li>Function: <strong>self.metrics</strong><br>
+./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/tensorflow/enas/trainer.py<br>
+File: <a href="https://github.com/microsoft/nni/blob/master/src/sdk/pynni/nni/nas/tensorflow/enas/trainer.py#L79">https://github.com/microsoft/nni/blob/master/src/sdk/pynni/nni/nas/tensorflow/enas/trainer.py#L79</a><br>
+Args: [&apos;<strong>y</strong>&apos;, &apos;<strong>logits</strong>&apos;] (&apos;./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/tensorflow/enas/trainer.py&apos;, 79, 26)<br>
+ArgPosi: [0, 1]<br>
+Confidence: 7.924005889604589</li>
+</ul>
+<p>No FunctionDef Found</p>
+<pre data-role="codeBlock" data-info class="language-"><code>75                     logits, aux_logits = logits
+76                     aux_loss = self.loss(aux_logits, y)
+77                 else:
+78                     aux_loss = 0.
+79                 metrics = self.metrics(y, logits)
+80                 loss = self.loss(y, logits) + aux_weight * aux_loss
+81 
+82             grads = tape.gradient(loss, self.model.trainable_weights)
+83             grads = fill_zero_grads(grads, self.model.trainable_weights)
+84             grads, _ = tf.clip_by_global_norm(grads, 5.0)
+</code></pre><p>Number of FunctionUsage: 10<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;logits&apos;, &apos;y&apos;], &apos;./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/pytorch/enas/trainer.py&apos;, 137, 22)
+([&apos;logits&apos;, &apos;y&apos;], &apos;./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/pytorch/enas/trainer.py&apos;, 164, 26)
+([&apos;logits&apos;, &apos;y&apos;], &apos;./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/pytorch/enas/trainer.py&apos;, 202, 30)
+([&apos;logits&apos;, &apos;trn_y&apos;], &apos;./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/pytorch/darts/trainer.py&apos;, 106, 22)
+([&apos;logits&apos;, &apos;y&apos;], &apos;./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/pytorch/darts/trainer.py&apos;, 122, 26)
+([&apos;logits&apos;, &apos;y&apos;], &apos;./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/pytorch/spos/trainer.py&apos;, 73, 22)
+([&apos;logits&apos;, &apos;y&apos;], &apos;./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/pytorch/spos/trainer.py&apos;, 88, 26)
+([&apos;y&apos;, &apos;logits&apos;], &apos;./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/tensorflow/enas/trainer.py&apos;, 79, 26)
+([&apos;y&apos;, &apos;logits&apos;], &apos;./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/tensorflow/enas/trainer.py&apos;, 104, 30)
+([&apos;logits&apos;, &apos;y&apos;], &apos;./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/tensorflow/enas/trainer.py&apos;, 142, 26)
+</code></pre><ul>
+<li>Function: <strong>self.loss</strong><br>
+./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/tensorflow/enas/trainer.py<br>
+File: <a href="https://github.com/microsoft/nni/blob/master/src/sdk/pynni/nni/nas/tensorflow/enas/trainer.py#L143">https://github.com/microsoft/nni/blob/master/src/sdk/pynni/nni/nas/tensorflow/enas/trainer.py#L143</a><br>
+Args: [&apos;<strong>y</strong>&apos;, &apos;<strong>logits</strong>&apos;] (&apos;./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/tensorflow/enas/trainer.py&apos;, 143, 23)<br>
+ArgPosi: [0, 1]<br>
+Confidence: 6.4701888689915</li>
+</ul>
+<p>No FunctionDef Found</p>
+<pre data-role="codeBlock" data-info class="language-"><code>139                 logits = self.model(x)
+140                 if isinstance(logits, tuple):
+141                     logits, _ = logits
+142                 metrics = self.metrics(logits, y)
+143                 loss = self.loss(y, logits)
+144                 metrics[&apos;loss&apos;] = tf.reduce_mean(loss).numpy()
+145                 meters.update(metrics)
+146 
+147             logger.info(&quot;Test Epoch [%d/%d] Arc [%d/%d] Summary  %s&quot;,
+148                         epoch + 1, self.num_epochs, arc_id + 1, test_arc_per_epoch,
+</code></pre><p>Number of FunctionUsage: 9<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;aux_logits&apos;, &apos;y&apos;], &apos;./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/pytorch/enas/trainer.py&apos;, 134, 27)
+([&apos;logits&apos;, &apos;y&apos;], &apos;./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/pytorch/enas/trainer.py&apos;, 138, 19)
+([&apos;logits&apos;, &apos;y&apos;], &apos;./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/pytorch/enas/trainer.py&apos;, 203, 27)
+([&apos;logits&apos;, &apos;y&apos;], &apos;./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/pytorch/darts/trainer.py&apos;, 131, 15)
+([&apos;logits&apos;, &apos;y&apos;], &apos;./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/pytorch/spos/trainer.py&apos;, 69, 19)
+([&apos;logits&apos;, &apos;y&apos;], &apos;./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/pytorch/spos/trainer.py&apos;, 87, 23)
+([&apos;aux_logits&apos;, &apos;y&apos;], &apos;./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/tensorflow/enas/trainer.py&apos;, 76, 31)
+([&apos;y&apos;, &apos;logits&apos;], &apos;./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/tensorflow/enas/trainer.py&apos;, 80, 23)
+([&apos;y&apos;, &apos;logits&apos;], &apos;./Workspace/microsoft/nni/src/sdk/pynni/nni/nas/tensorflow/enas/trainer.py&apos;, 143, 23)
+</code></pre><ul>
+<li>Function: <strong>mx.symbol.broadcast_mul</strong><br>
+./Workspace/deepinsight/insightface/PRNet.mxnet/symbol/sym_heatmap.py<br>
+File: <a href="https://github.com/deepinsight/insightface/blob/master/PRNet.mxnet/symbol/sym_heatmap.py#L311">https://github.com/deepinsight/insightface/blob/master/PRNet.mxnet/symbol/sym_heatmap.py#L311</a><br>
+Args: [&apos;<strong>loss</strong>&apos;, &apos;<strong>mask_label</strong>&apos;] (&apos;./Workspace/deepinsight/insightface/PRNet.mxnet/symbol/sym_heatmap.py&apos;, 311, 9)<br>
+ArgPosi: [0, 1]<br>
+Confidence: 5.615289955808307</li>
+</ul>
+<p>No FunctionDef Found</p>
+<pre data-role="codeBlock" data-info class="language-"><code>307 def prnet_loss(pred, gt_label, mask_label):
+308   loss = pred - gt_label
+309   #loss = mx.symbol.smooth_l1(loss, scalar=3.0)
+310   loss = mx.symbol.abs(loss)
+311   loss = mx.symbol.broadcast_mul(loss, mask_label)
+312   #loss = mx.symbol.mean(loss, axis=0)
+313   #loss = loss*loss
+314   #loss = mx.symbol.mean(loss)
+315   return loss
+316 
+</code></pre><p>Number of FunctionUsage: 31<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;bn3&apos;, &apos;body&apos;], &apos;./Workspace/deepinsight/insightface/recognition/symbol/fresnet.py&apos;, 102, 16)
+([&apos;bn2&apos;, &apos;body&apos;], &apos;./Workspace/deepinsight/insightface/recognition/symbol/fresnet.py&apos;, 131, 16)
+([&apos;bn3&apos;, &apos;body&apos;], &apos;./Workspace/deepinsight/insightface/recognition/symbol/fresnet.py&apos;, 191, 16)
+([&apos;bn2&apos;, &apos;body&apos;], &apos;./Workspace/deepinsight/insightface/recognition/symbol/fresnet.py&apos;, 220, 16)
+([&apos;conv3&apos;, &apos;body&apos;], &apos;./Workspace/deepinsight/insightface/recognition/symbol/fresnet.py&apos;, 281, 18)
+([&apos;conv2&apos;, &apos;body&apos;], &apos;./Workspace/deepinsight/insightface/recognition/symbol/fresnet.py&apos;, 308, 18)
+([&apos;bn4&apos;, &apos;body&apos;], &apos;./Workspace/deepinsight/insightface/recognition/symbol/fresnet.py&apos;, 367, 16)
+([&apos;bn3&apos;, &apos;body&apos;], &apos;./Workspace/deepinsight/insightface/recognition/symbol/fresnet.py&apos;, 397, 16)
+([&apos;bn4&apos;, &apos;body&apos;], &apos;./Workspace/deepinsight/insightface/recognition/symbol/fresnet.py&apos;, 460, 12)
+([&apos;bn3&apos;, &apos;body&apos;], &apos;./Workspace/deepinsight/insightface/recognition/symbol/symbol_utils.py&apos;, 204, 16)
+</code></pre><h2 class="mume-header" id="constant-usages-2">Constant Usages - 2</h2>
+
+<ul>
+<li>Function: <strong>self.blocks.conv</strong><br>
+./Workspace/deepfakes/faceswap/plugins/train/model/villain.py<br>
+File: <a href="https://github.com/deepfakes/faceswap/blob/master/plugins/train/model/villain.py#L37">https://github.com/deepfakes/faceswap/blob/master/plugins/train/model/villain.py#L37</a><br>
+Args: [&apos;<strong>input_</strong>&apos;, &apos;<strong>in_conv_filters</strong>&apos;] (&apos;./Workspace/deepfakes/faceswap/plugins/train/model/villain.py&apos;, 37, 16)<br>
+ArgPosi: [0, 1]<br>
+Confidence: 6.100701575147243</li>
+</ul>
+<p>No FunctionDef Found</p>
+<pre data-role="codeBlock" data-info class="language-"><code>33         if self.input_shape[0] &gt; 128:
+34             in_conv_filters = 128 + (self.input_shape[0] - 128) // 4
+35         dense_shape = self.input_shape[0] // 16
+36 
+37         var_x = self.blocks.conv(input_, in_conv_filters, res_block_follows=True, **kwargs)
+38         tmp_x = var_x
+39         res_cycles = 8 if self.config.get(&quot;lowmem&quot;, False) else 16
+40         for _ in range(res_cycles):
+41             nn_x = self.blocks.res_block(var_x, in_conv_filters, **kwargs)
+42             var_x = nn_x
+</code></pre><p>Number of FunctionUsage: 40<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;var_x&apos;, &apos;Constant&apos;], &apos;./Workspace/deepfakes/faceswap/plugins/train/model/dlight.py&apos;, 109, 17)
+([&apos;var_x&apos;, &apos;Constant&apos;], &apos;./Workspace/deepfakes/faceswap/plugins/train/model/dlight.py&apos;, 114, 17)
+([&apos;var_x&apos;, &apos;Constant&apos;], &apos;./Workspace/deepfakes/faceswap/plugins/train/model/dlight.py&apos;, 119, 17)
+([&apos;var_x&apos;, &apos;Constant&apos;], &apos;./Workspace/deepfakes/faceswap/plugins/train/model/dlight.py&apos;, 124, 17)
+([&apos;var_x&apos;, &apos;Constant&apos;], &apos;./Workspace/deepfakes/faceswap/plugins/train/model/dlight.py&apos;, 129, 17)
+([&apos;var_x&apos;, &apos;dims&apos;], &apos;./Workspace/deepfakes/faceswap/plugins/train/model/dfl_sae.py&apos;, 102, 16)
+([&apos;var_x&apos;, &apos;Constant&apos;], &apos;./Workspace/deepfakes/faceswap/plugins/train/model/dfl_sae.py&apos;, 103, 16)
+([&apos;var_x&apos;, &apos;Constant&apos;], &apos;./Workspace/deepfakes/faceswap/plugins/train/model/dfl_sae.py&apos;, 104, 16)
+([&apos;var_x&apos;, &apos;Constant&apos;], &apos;./Workspace/deepfakes/faceswap/plugins/train/model/dfl_sae.py&apos;, 105, 16)
+([&apos;var_x&apos;, &apos;dims&apos;], &apos;./Workspace/deepfakes/faceswap/plugins/train/model/dfl_sae.py&apos;, 117, 16)
+</code></pre><ul>
+<li>Function: <strong>ByteEnumField</strong><br>
+./Workspace/secdev/scapy/scapy/contrib/tzsp.py<br>
+File: <a href="https://github.com/secdev/scapy/blob/master/scapy/contrib/tzsp.py#L94">https://github.com/secdev/scapy/blob/master/scapy/contrib/tzsp.py#L94</a><br>
+Args: [&apos;Constant&apos;, &apos;<strong>TYPE_RX_PACKET</strong>&apos;, &apos;<strong>TYPES</strong>&apos;] (&apos;./Workspace/secdev/scapy/scapy/contrib/tzsp.py&apos;, 94, 8)<br>
+ArgPosi: [1, 2]<br>
+Confidence: 5.942818003325886</li>
+</ul>
+<p>No FunctionDef Found</p>
+<pre data-role="codeBlock" data-info class="language-"><code>90     }
+91 
+92     fields_desc = [
+93         ByteField(&apos;version&apos;, 0x01),
+94         ByteEnumField(&apos;type&apos;, TYPE_RX_PACKET, TYPES),
+95         ShortEnumField(&apos;encapsulated_protocol&apos;, ENCAPSULATED_ETHERNET, ENCAPSULATED_PROTOCOLS)  # noqa: E501
+96     ]
+97 
+98     def get_encapsulated_payload_class(self):
+99         &quot;&quot;&quot;
+</code></pre><p>Number of FunctionUsage: 1094<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;Constant&apos;, &apos;Constant&apos;, &apos;ipv6nh&apos;], &apos;./Workspace/secdev/scapy/scapy/layers/inet6.py&apos;, 275, 19)
+([&apos;Constant&apos;, &apos;Constant&apos;, &apos;ipv6nh&apos;], &apos;./Workspace/secdev/scapy/scapy/layers/inet6.py&apos;, 856, 19)
+([&apos;Constant&apos;, &apos;Constant&apos;, &apos;ipv6nh&apos;], &apos;./Workspace/secdev/scapy/scapy/layers/inet6.py&apos;, 869, 19)
+([&apos;Constant&apos;, &apos;Constant&apos;, &apos;ipv6nh&apos;], &apos;./Workspace/secdev/scapy/scapy/layers/inet6.py&apos;, 882, 19)
+([&apos;Constant&apos;, &apos;Constant&apos;, &apos;ipv6nh&apos;], &apos;./Workspace/secdev/scapy/scapy/layers/inet6.py&apos;, 955, 19)
+([&apos;Constant&apos;, &apos;Constant&apos;, &apos;ipv6nh&apos;], &apos;./Workspace/secdev/scapy/scapy/layers/inet6.py&apos;, 1017, 19)
+([&apos;Constant&apos;, &apos;Constant&apos;, &apos;icmp6types&apos;], &apos;./Workspace/secdev/scapy/scapy/layers/inet6.py&apos;, 1329, 19)
+([&apos;Constant&apos;, &apos;Constant&apos;, &apos;icmp6types&apos;], &apos;./Workspace/secdev/scapy/scapy/layers/inet6.py&apos;, 1339, 19)
+([&apos;Constant&apos;, &apos;Constant&apos;, &apos;icmp6types&apos;], &apos;./Workspace/secdev/scapy/scapy/layers/inet6.py&apos;, 1352, 19)
+([&apos;Constant&apos;, &apos;Constant&apos;, &apos;icmp6types&apos;], &apos;./Workspace/secdev/scapy/scapy/layers/inet6.py&apos;, 1360, 19)
+</code></pre><h2 class="mume-header" id="built-in-functions-added-to-filter-4">Built-in Functions (Added to filter) - 4</h2>
+
+<ul>
+<li>Function: <strong>shutil.copytree</strong><br>
+./Workspace/brython-dev/brython/setup/brython/<strong>main</strong>.py<br>
+File: <a href="https://github.com/brython-dev/brython/blob/master/setup/brython/__main__.py#L73">https://github.com/brython-dev/brython/blob/master/setup/brython/__main__.py#L73</a><br>
+Args: [&apos;<strong>package_dir</strong>&apos;, &apos;<strong>dest_dir</strong>&apos;] (&apos;./Workspace/brython-dev/brython/setup/brython/<strong>main</strong>.py&apos;, 73, 12)<br>
+ArgPosi: [0, 1]<br>
+Confidence: 5.974766281175466</li>
+</ul>
+<p>No FunctionDef Found</p>
+<pre data-role="codeBlock" data-info class="language-"><code>69             print(&apos;copy folder&apos;, package_dir)
+70             dest_dir = os.path.join(dest_dir, args.add_package)
+71             if os.path.exists(dest_dir):
+72                 shutil.rmtree(dest_dir)
+73             shutil.copytree(package_dir, dest_dir)
+74         else:
+75             print(&apos;copy single file&apos;, package_file)
+76             shutil.copyfile(package_file, os.path.join(dest_dir,
+77                 os.path.basename(package_file)))
+78 
+</code></pre><p>Number of FunctionUsage: 19<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;Constant&apos;, &apos;dest_dir&apos;], &apos;./Workspace/brython-dev/brython/scripts/make_doc.py&apos;, 94, 16)
+([&apos;package_dir&apos;, &apos;dest_dir&apos;], &apos;./Workspace/brython-dev/brython/setup/brython/__main__.py&apos;, 73, 12)
+([&apos;src_dir&apos;, &apos;dst_dir&apos;], &apos;./Workspace/brython-dev/brython/www/src/Lib/test/test_shutil.py&apos;, 748, 8)
+([&apos;src_dir&apos;, &apos;dst_dir&apos;], &apos;./Workspace/brython-dev/brython/www/src/Lib/test/test_shutil.py&apos;, 770, 8)
+([&apos;src_dir&apos;, &apos;dst_dir&apos;], &apos;./Workspace/brython-dev/brython/www/src/Lib/test/test_shutil.py&apos;, 781, 12)
+([&apos;src_dir&apos;, &apos;dst_dir&apos;], &apos;./Workspace/brython-dev/brython/www/src/Lib/test/test_shutil.py&apos;, 801, 8)
+([&apos;src_dir&apos;, &apos;dst_dir&apos;], &apos;./Workspace/brython-dev/brython/www/src/Lib/test/test_shutil.py&apos;, 836, 16)
+([&apos;src_dir&apos;, &apos;dst_dir&apos;], &apos;./Workspace/brython-dev/brython/www/src/Lib/test/test_shutil.py&apos;, 845, 16)
+([&apos;src_dir&apos;, &apos;dst_dir&apos;], &apos;./Workspace/brython-dev/brython/www/src/Lib/test/test_shutil.py&apos;, 867, 16)
+([&apos;src_dir&apos;, &apos;dst_dir&apos;], &apos;./Workspace/brython-dev/brython/www/src/Lib/test/test_shutil.py&apos;, 895, 8)
+</code></pre><ul>
+<li>Function: <strong>open</strong><br>
+./Workspace/openrazer/openrazer/pylib/openrazer/_fake_driver/<strong>init</strong>.py<br>
+File: <a href="https://github.com/openrazer/openrazer/tree/master/pylib/openrazer/_fake_driver/">https://github.com/openrazer/openrazer/tree/master/pylib/openrazer/_fake_driver/</a><strong>init</strong>.py#L143<br>
+Args: [&apos;<strong>path</strong>&apos;, &apos;<strong>read_mode</strong>&apos;] (&apos;./Workspace/openrazer/openrazer/pylib/openrazer/_fake_driver/<strong>init</strong>.py&apos;, 143, 13)<br>
+ArgPosi: [0, 1]<br>
+Confidence: 5.921447191513428</li>
+</ul>
+<p>No FunctionDef Found</p>
+<pre data-role="codeBlock" data-info class="language-"><code>139             read_mode = &apos;rb&apos;
+140         else:
+141             read_mode = &apos;r&apos;
+142 
+143         with open(path, read_mode) as open_endpoint:
+144             result = open_endpoint.read()
+145 
+146         return result
+147 
+148     def set(self, endpoint, value, binary=False):
+</code></pre><p>Number of FunctionUsage: 161<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;filename&apos;, &apos;Constant&apos;], &apos;./Workspace/openrazer/openrazer/scripts/driver/keyboard_keys.py&apos;, 40, 9)
+([&apos;wave_mode_filepath&apos;, &apos;Constant&apos;], &apos;./Workspace/openrazer/openrazer/scripts/razer_mouse/driver/wave_effect.py&apos;, 58, 9)
+([&apos;battery_filepath&apos;, &apos;Constant&apos;], &apos;./Workspace/openrazer/openrazer/scripts/razer_mouse/driver/get_battery.py&apos;, 38, 9)
+([&apos;low_battery_threshold_filepath&apos;, &apos;Constant&apos;], &apos;./Workspace/openrazer/openrazer/scripts/razer_mouse/driver/low_battery_threshold.py&apos;, 57, 9)
+([&apos;static_mode_filepath&apos;, &apos;Constant&apos;], &apos;./Workspace/openrazer/openrazer/scripts/razer_mouse/driver/static_effect.py&apos;, 56, 9)
+([&apos;set_colour_filename&apos;, &apos;Constant&apos;], &apos;./Workspace/openrazer/openrazer/scripts/razer_mouse/driver/custom_effect.py&apos;, 61, 13)
+([&apos;set_custom_mode_filename&apos;, &apos;Constant&apos;], &apos;./Workspace/openrazer/openrazer/scripts/razer_mouse/driver/custom_effect.py&apos;, 63, 13)
+([&apos;set_mouse_dpi_filepath&apos;, &apos;Constant&apos;], &apos;./Workspace/openrazer/openrazer/scripts/razer_mouse/driver/set_mouse_dpi.py&apos;, 61, 9)
+([&apos;set_charging_effect_filepath&apos;, &apos;Constant&apos;], &apos;./Workspace/openrazer/openrazer/scripts/razer_mouse/driver/set_charging_effect.py&apos;, 60, 9)
+([&apos;spectrum_mode_filepath&apos;, &apos;Constant&apos;], &apos;./Workspace/openrazer/openrazer/scripts/razer_mouse/driver/spectrum_effect.py&apos;, 53, 9)
+</code></pre><ul>
+<li>Function: <strong>open</strong><br>
+./Workspace/openrazer/openrazer/pylib/openrazer/_fake_driver/<strong>init</strong>.py<br>
+File: <a href="https://github.com/openrazer/openrazer/tree/master/pylib/openrazer/_fake_driver/">https://github.com/openrazer/openrazer/tree/master/pylib/openrazer/_fake_driver/</a><strong>init</strong>.py#L159<br>
+Args: [&apos;<strong>path</strong>&apos;, &apos;<strong>write_mode</strong>&apos;] (&apos;./Workspace/openrazer/openrazer/pylib/openrazer/_fake_driver/<strong>init</strong>.py&apos;, 159, 13)<br>
+ArgPosi: [0, 1]<br>
+Confidence: 5.921447191513428</li>
+</ul>
+<p>No FunctionDef Found</p>
+<pre data-role="codeBlock" data-info class="language-"><code>155             write_mode = &apos;wb&apos;
+156         else:
+157             write_mode = &apos;w&apos;
+158 
+159         with open(path, write_mode) as open_endpoint:
+160             open_endpoint.write(value)
+161 
+162     def emit_kb_event(self, file_id, key_code, value):
+163 
+164         if file_id not in self.events:
+</code></pre><p>Number of FunctionUsage: 161<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;filename&apos;, &apos;Constant&apos;], &apos;./Workspace/openrazer/openrazer/scripts/driver/keyboard_keys.py&apos;, 40, 9)
+([&apos;wave_mode_filepath&apos;, &apos;Constant&apos;], &apos;./Workspace/openrazer/openrazer/scripts/razer_mouse/driver/wave_effect.py&apos;, 58, 9)
+([&apos;battery_filepath&apos;, &apos;Constant&apos;], &apos;./Workspace/openrazer/openrazer/scripts/razer_mouse/driver/get_battery.py&apos;, 38, 9)
+([&apos;low_battery_threshold_filepath&apos;, &apos;Constant&apos;], &apos;./Workspace/openrazer/openrazer/scripts/razer_mouse/driver/low_battery_threshold.py&apos;, 57, 9)
+([&apos;static_mode_filepath&apos;, &apos;Constant&apos;], &apos;./Workspace/openrazer/openrazer/scripts/razer_mouse/driver/static_effect.py&apos;, 56, 9)
+([&apos;set_colour_filename&apos;, &apos;Constant&apos;], &apos;./Workspace/openrazer/openrazer/scripts/razer_mouse/driver/custom_effect.py&apos;, 61, 13)
+([&apos;set_custom_mode_filename&apos;, &apos;Constant&apos;], &apos;./Workspace/openrazer/openrazer/scripts/razer_mouse/driver/custom_effect.py&apos;, 63, 13)
+([&apos;set_mouse_dpi_filepath&apos;, &apos;Constant&apos;], &apos;./Workspace/openrazer/openrazer/scripts/razer_mouse/driver/set_mouse_dpi.py&apos;, 61, 9)
+([&apos;set_charging_effect_filepath&apos;, &apos;Constant&apos;], &apos;./Workspace/openrazer/openrazer/scripts/razer_mouse/driver/set_charging_effect.py&apos;, 60, 9)
+([&apos;spectrum_mode_filepath&apos;, &apos;Constant&apos;], &apos;./Workspace/openrazer/openrazer/scripts/razer_mouse/driver/spectrum_effect.py&apos;, 53, 9)
+</code></pre><ul>
+<li>Function: <strong>map</strong><br>
+./Workspace/taigaio/taiga-back/taiga/base/filters.py<br>
+File: <a href="https://github.com/taigaio/taiga-back/tree/master/taiga/base/filters.py#L403">https://github.com/taigaio/taiga-back/tree/master/taiga/base/filters.py#L403</a><br>
+Args: [&apos;<strong>_transform_value</strong>&apos;, &apos;<strong>values</strong>&apos;] (&apos;./Workspace/taigaio/taiga-back/taiga/base/filters.py&apos;, 403, 17)<br>
+ArgPosi: [0, 1]<br>
+Confidence: 6.05934428619035</li>
+</ul>
+<p>No FunctionDef Found</p>
+<pre data-role="codeBlock" data-info class="language-"><code>399                     return self._special_values_dict[value]
+400             raise exc.BadRequest()
+401 
+402         values = set([x.strip() for x in query_param_value.split(&quot;,&quot;)])
+403         values = map(_transform_value, values)
+404         return list(values)
+405 
+406     def _get_queryparams(self, params, mode=&apos;&apos;):
+407         param_name = self.exclude_param_name if mode == &apos;exclude&apos; else \
+408             self.param_name or self.filter_name
+</code></pre><p>Number of FunctionUsage: 241<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;Constant&apos;, &apos;rates&apos;], &apos;./Workspace/taigaio/taiga-back/taiga/base/throttling.py&apos;, 148, 24)
+([&apos;_transform_value&apos;, &apos;values&apos;], &apos;./Workspace/taigaio/taiga-back/taiga/base/filters.py&apos;, 403, 17)
+([&apos;Constant&apos;, &apos;ANON_PERMISSIONS&apos;], &apos;./Workspace/taigaio/taiga-back/taiga/importers/services.py&apos;, 63, 8)
+([&apos;Constant&apos;, &apos;projects&apos;], &apos;./Workspace/taigaio/taiga-back/taiga/importers/jira/common.py&apos;, 195, 32)
+([&apos;Constant&apos;, &apos;ADMINS_PERMISSIONS&apos;], &apos;./Workspace/taigaio/taiga-back/taiga/permissions/services.py&apos;, 97, 34)
+([&apos;Constant&apos;, &apos;MEMBERS_PERMISSIONS&apos;], &apos;./Workspace/taigaio/taiga-back/taiga/permissions/services.py&apos;, 98, 35)
+([&apos;Constant&apos;, &apos;ANON_PERMISSIONS&apos;], &apos;./Workspace/taigaio/taiga-back/taiga/permissions/services.py&apos;, 100, 32)
+([&apos;Constant&apos;, &apos;ADMINS_PERMISSIONS&apos;], &apos;./Workspace/taigaio/taiga-back/taiga/permissions/services.py&apos;, 103, 38)
+([&apos;Constant&apos;, &apos;MEMBERS_PERMISSIONS&apos;], &apos;./Workspace/taigaio/taiga-back/taiga/permissions/services.py&apos;, 104, 39)
+([&apos;Constant&apos;, &apos;ANON_PERMISSIONS&apos;], &apos;./Workspace/taigaio/taiga-back/taiga/permissions/services.py&apos;, 151, 32)
+</code></pre><h2 class="mume-header" id="the-quality-of-embeddings-7">The Quality of Embeddings - 7</h2>
+
+<ul>
+<li>Function: <strong>self.build_list_params</strong><br>
+./Workspace/boto/boto/boto/emr/connection.py<br>
+File: <a href="https://github.com/boto/boto/blob/master/boto/emr/connection.py#L643">https://github.com/boto/boto/blob/master/boto/emr/connection.py#L643</a><br>
+Args: [&apos;<strong>bootstrap_action_params</strong>&apos;, &apos;<strong>args</strong>&apos;, &apos;Constant&apos;] (&apos;./Workspace/boto/boto/boto/emr/connection.py&apos;, 643, 12)<br>
+ArgPosi: [0, 1]<br>
+Confidence: 5.666039541723084</li>
+</ul>
+<p>No FunctionDef Found</p>
+<pre data-role="codeBlock" data-info class="language-"><code>639             pass
+640 
+641         args = bootstrap_action.args()
+642         if args:
+643             self.build_list_params(bootstrap_action_params, args, &apos;ScriptBootstrapAction.Args.member&apos;)
+644 
+645         return bootstrap_action_params
+646 
+647     def _build_step_args(self, step):
+648         step_params = {}
+</code></pre><p>Number of FunctionUsage: 189<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;params&apos;, &apos;analysis_scheme_names&apos;, &apos;Constant&apos;], &apos;./Workspace/boto/boto/boto/cloudsearch2/layer1.py&apos;, 389, 12)
+([&apos;params&apos;, &apos;domain_names&apos;, &apos;Constant&apos;], &apos;./Workspace/boto/boto/boto/cloudsearch2/layer1.py&apos;, 445, 12)
+([&apos;params&apos;, &apos;expression_names&apos;, &apos;Constant&apos;], &apos;./Workspace/boto/boto/boto/cloudsearch2/layer1.py&apos;, 480, 12)
+([&apos;params&apos;, &apos;field_names&apos;, &apos;Constant&apos;], &apos;./Workspace/boto/boto/boto/cloudsearch2/layer1.py&apos;, 518, 12)
+([&apos;params&apos;, &apos;suggester_names&apos;, &apos;Constant&apos;], &apos;./Workspace/boto/boto/boto/cloudsearch2/layer1.py&apos;, 605, 12)
+([&apos;params&apos;, &apos;l&apos;, &apos;Constant&apos;], &apos;./Workspace/boto/boto/boto/rds/__init__.py&apos;, 441, 12)
+([&apos;params&apos;, &apos;l&apos;, &apos;Constant&apos;], &apos;./Workspace/boto/boto/boto/rds/__init__.py&apos;, 450, 12)
+([&apos;params&apos;, &apos;l&apos;, &apos;Constant&apos;], &apos;./Workspace/boto/boto/boto/rds/__init__.py&apos;, 672, 12)
+([&apos;params&apos;, &apos;l&apos;, &apos;Constant&apos;], &apos;./Workspace/boto/boto/boto/rds/__init__.py&apos;, 680, 12)
+([&apos;params&apos;, &apos;subnet_ids&apos;, &apos;Constant&apos;], &apos;./Workspace/boto/boto/boto/rds/__init__.py&apos;, 1418, 8)
+</code></pre><ul>
+<li>Function: <strong>self.build_list_params</strong><br>
+./Workspace/boto/boto/boto/emr/connection.py<br>
+File: <a href="https://github.com/boto/boto/blob/master/boto/emr/connection.py#L658">https://github.com/boto/boto/blob/master/boto/emr/connection.py#L658</a><br>
+Args: [&apos;<strong>step_params</strong>&apos;, &apos;<strong>args</strong>&apos;, &apos;Constant&apos;] (&apos;./Workspace/boto/boto/boto/emr/connection.py&apos;, 658, 12)<br>
+ArgPosi: [0, 1]<br>
+Confidence: 5.666039541723084</li>
+</ul>
+<p>No FunctionDef Found</p>
+<pre data-role="codeBlock" data-info class="language-"><code>654             step_params[&apos;HadoopJarStep.MainClass&apos;] = main_class
+655 
+656         args = step.args()
+657         if args:
+658             self.build_list_params(step_params, args, &apos;HadoopJarStep.Args.member&apos;)
+659 
+660         step_params[&apos;Name&apos;] = step.name
+661         return step_params
+662 
+663     def _build_bootstrap_action_list(self, bootstrap_actions):
+</code></pre><p>Number of FunctionUsage: 189<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;params&apos;, &apos;analysis_scheme_names&apos;, &apos;Constant&apos;], &apos;./Workspace/boto/boto/boto/cloudsearch2/layer1.py&apos;, 389, 12)
+([&apos;params&apos;, &apos;domain_names&apos;, &apos;Constant&apos;], &apos;./Workspace/boto/boto/boto/cloudsearch2/layer1.py&apos;, 445, 12)
+([&apos;params&apos;, &apos;expression_names&apos;, &apos;Constant&apos;], &apos;./Workspace/boto/boto/boto/cloudsearch2/layer1.py&apos;, 480, 12)
+([&apos;params&apos;, &apos;field_names&apos;, &apos;Constant&apos;], &apos;./Workspace/boto/boto/boto/cloudsearch2/layer1.py&apos;, 518, 12)
+([&apos;params&apos;, &apos;suggester_names&apos;, &apos;Constant&apos;], &apos;./Workspace/boto/boto/boto/cloudsearch2/layer1.py&apos;, 605, 12)
+([&apos;params&apos;, &apos;l&apos;, &apos;Constant&apos;], &apos;./Workspace/boto/boto/boto/rds/__init__.py&apos;, 441, 12)
+([&apos;params&apos;, &apos;l&apos;, &apos;Constant&apos;], &apos;./Workspace/boto/boto/boto/rds/__init__.py&apos;, 450, 12)
+([&apos;params&apos;, &apos;l&apos;, &apos;Constant&apos;], &apos;./Workspace/boto/boto/boto/rds/__init__.py&apos;, 672, 12)
+([&apos;params&apos;, &apos;l&apos;, &apos;Constant&apos;], &apos;./Workspace/boto/boto/boto/rds/__init__.py&apos;, 680, 12)
+([&apos;params&apos;, &apos;subnet_ids&apos;, &apos;Constant&apos;], &apos;./Workspace/boto/boto/boto/rds/__init__.py&apos;, 1418, 8)
+</code></pre><ul>
+<li>Function: <strong>nn.Conv2D</strong><br>
+./Workspace/dmlc/gluon-cv/gluoncv/model_zoo/squeezenet.py<br>
+File: <a href="https://github.com/dmlc/gluon-cv/blob/master/gluoncv/model_zoo/squeezenet.py#L42">https://github.com/dmlc/gluon-cv/blob/master/gluoncv/model_zoo/squeezenet.py#L42</a><br>
+Args: [&apos;<strong>channels</strong>&apos;, &apos;<strong>kernel_size</strong>&apos;] (&apos;./Workspace/dmlc/gluon-cv/gluoncv/model_zoo/squeezenet.py&apos;, 42, 12)<br>
+ArgPosi: [0, 1]<br>
+Confidence: 5.338734169629667</li>
+</ul>
+<p>No FunctionDef Found</p>
+<pre data-role="codeBlock" data-info class="language-"><code>38     return out
+39 
+40 def _make_fire_conv(channels, kernel_size, padding=0):
+41     out = nn.HybridSequential(prefix=&apos;&apos;)
+42     out.add(nn.Conv2D(channels, kernel_size, padding=padding))
+43     out.add(nn.Activation(&apos;relu&apos;))
+44     return out
+45 
+46 # Net
+47 class SqueezeNet(HybridBlock):
+</code></pre><p>Number of FunctionUsage: 316<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;num_channel&apos;, &apos;kernel&apos;], &apos;./Workspace/dmlc/gluon-cv/gluoncv/nn/predictor.py&apos;, 40, 29)
+([&apos;channels&apos;, &apos;kernel_size&apos;], &apos;./Workspace/dmlc/gluon-cv/gluoncv/model_zoo/squeezenet.py&apos;, 42, 12)
+([&apos;classes&apos;, &apos;Constant&apos;], &apos;./Workspace/dmlc/gluon-cv/gluoncv/model_zoo/mobilenet.py&apos;, 230, 20)
+([&apos;num_filters&apos;, &apos;Constant&apos;], &apos;./Workspace/dmlc/gluon-cv/gluoncv/model_zoo/nasnet.py&apos;, 153, 26)
+([&apos;num_filters&apos;, &apos;Constant&apos;], &apos;./Workspace/dmlc/gluon-cv/gluoncv/model_zoo/nasnet.py&apos;, 209, 26)
+([&apos;out_channels_right&apos;, &apos;Constant&apos;], &apos;./Workspace/dmlc/gluon-cv/gluoncv/model_zoo/nasnet.py&apos;, 286, 26)
+([&apos;out_channels_left&apos;, &apos;Constant&apos;], &apos;./Workspace/dmlc/gluon-cv/gluoncv/model_zoo/nasnet.py&apos;, 292, 24)
+([&apos;out_channels_left&apos;, &apos;Constant&apos;], &apos;./Workspace/dmlc/gluon-cv/gluoncv/model_zoo/nasnet.py&apos;, 297, 24)
+([&apos;out_channels_left&apos;, &apos;Constant&apos;], &apos;./Workspace/dmlc/gluon-cv/gluoncv/model_zoo/nasnet.py&apos;, 362, 31)
+([&apos;out_channels_right&apos;, &apos;Constant&apos;], &apos;./Workspace/dmlc/gluon-cv/gluoncv/model_zoo/nasnet.py&apos;, 368, 26)
+</code></pre><ul>
+<li>Function: <strong>TransitionResult</strong><br>
+./Workspace/raiden-network/raiden/raiden/transfer/mediated_transfer/mediator.py<br>
+File: <a href="https://github.com/raiden-network/raiden/blob/master/raiden/transfer/mediated_transfer/mediator.py#L1111">https://github.com/raiden-network/raiden/blob/master/raiden/transfer/mediated_transfer/mediator.py#L1111</a><br>
+Args: [&apos;<strong>state</strong>&apos;, &apos;<strong>mediated_events</strong>&apos;] (&apos;./Workspace/raiden-network/raiden/raiden/transfer/mediated_transfer/mediator.py&apos;, 1111, 11)<br>
+ArgPosi: [0, 1]<br>
+Confidence: 5.157661577439287</li>
+</ul>
+<p>No FunctionDef Found</p>
+<pre data-role="codeBlock" data-info class="language-"><code>1107         # the list must be ordered from high to low expiration, expiration
+1108         # handling depends on it
+1109         state.transfers_pair.append(transfer_pair)
+1110 
+1111     return TransitionResult(state, mediated_events)
+1112 
+1113 
+1114 def handle_init(
+1115     state_change: ActionInitMediator,
+1116     channelidentifiers_to_channels: Dict[ChannelID, NettingChannelState],
+</code></pre><p>Number of FunctionUsage: 113<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;chain_state&apos;, &apos;events&apos;], &apos;./Workspace/raiden-network/raiden/raiden/transfer/node.py&apos;, 143, 11)
+([&apos;chain_state&apos;, &apos;events&apos;], &apos;./Workspace/raiden-network/raiden/raiden/transfer/node.py&apos;, 166, 11)
+([&apos;chain_state&apos;, &apos;events&apos;], &apos;./Workspace/raiden-network/raiden/raiden/transfer/node.py&apos;, 178, 11)
+([&apos;chain_state&apos;, &apos;events&apos;], &apos;./Workspace/raiden-network/raiden/raiden/transfer/node.py&apos;, 262, 11)
+([&apos;chain_state&apos;, &apos;Constant&apos;], &apos;./Workspace/raiden-network/raiden/raiden/transfer/node.py&apos;, 273, 15)
+([&apos;chain_state&apos;, &apos;Constant&apos;], &apos;./Workspace/raiden-network/raiden/raiden/transfer/node.py&apos;, 283, 19)
+([&apos;chain_state&apos;, &apos;events&apos;], &apos;./Workspace/raiden-network/raiden/raiden/transfer/node.py&apos;, 303, 11)
+([&apos;chain_state&apos;, &apos;events&apos;], &apos;./Workspace/raiden-network/raiden/raiden/transfer/node.py&apos;, 351, 11)
+([&apos;chain_state&apos;, &apos;events&apos;], &apos;./Workspace/raiden-network/raiden/raiden/transfer/node.py&apos;, 406, 11)
+([&apos;chain_state&apos;, &apos;events&apos;], &apos;./Workspace/raiden-network/raiden/raiden/transfer/node.py&apos;, 499, 11)
+</code></pre><ul>
+<li>Function: <strong>fill_prototype</strong><br>
+./Workspace/taxigps/xbmc-addons-chinese/plugin.video.dnvodPlayer/js2py/constructors/jsobject.py<br>
+File: <a href="https://github.com/taxigps/xbmc-addons-chinese/blob/master/plugin.video.dnvodPlayer/js2py/constructors/jsobject.py#L132">https://github.com/taxigps/xbmc-addons-chinese/blob/master/plugin.video.dnvodPlayer/js2py/constructors/jsobject.py#L132</a><br>
+Args: [&apos;<strong>Object</strong>&apos;, &apos;<strong>ObjectMethods</strong>&apos;, &apos;default_attrs&apos;] (&apos;./Workspace/taxigps/xbmc-addons-chinese/plugin.video.dnvodPlayer/js2py/constructors/jsobject.py&apos;, 132, 0)<br>
+ArgPosi: [0, 1]<br>
+Confidence: 5.004435379367334</li>
+</ul>
+<p>No FunctionDef Found</p>
+<pre data-role="codeBlock" data-info class="language-"><code>128         return [e for e,d in six.iteritems(obj.own) if d.get(&apos;enumerable&apos;)]
+129 
+130 
+131 # add methods attached to Object constructor
+132 fill_prototype(Object, ObjectMethods, default_attrs)
+133 # add constructor to prototype
+134 fill_in_props(ObjectPrototype, {&apos;constructor&apos;:Object}, default_attrs)
+135 # add prototype property to the constructor.
+136 Object.define_own_property(&apos;prototype&apos;, {&apos;value&apos;: ObjectPrototype,
+137                                          &apos;enumerable&apos;: False,
+</code></pre><p>Number of FunctionUsage: 21<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;ObjectPrototype&apos;, &apos;Constant&apos;, &apos;default_attrs&apos;], &apos;./Workspace/taxigps/xbmc-addons-chinese/plugin.video.dnvodPlayer/js2py/base.py&apos;, 2560, 0)
+([&apos;FunctionPrototype&apos;, &apos;Constant&apos;, &apos;default_attrs&apos;], &apos;./Workspace/taxigps/xbmc-addons-chinese/plugin.video.dnvodPlayer/js2py/base.py&apos;, 2577, 0)
+([&apos;NumberPrototype&apos;, &apos;Constant&apos;, &apos;default_attrs&apos;], &apos;./Workspace/taxigps/xbmc-addons-chinese/plugin.video.dnvodPlayer/js2py/base.py&apos;, 2579, 0)
+([&apos;StringPrototype&apos;, &apos;Constant&apos;, &apos;default_attrs&apos;], &apos;./Workspace/taxigps/xbmc-addons-chinese/plugin.video.dnvodPlayer/js2py/base.py&apos;, 2581, 0)
+([&apos;BooleanPrototype&apos;, &apos;Constant&apos;, &apos;default_attrs&apos;], &apos;./Workspace/taxigps/xbmc-addons-chinese/plugin.video.dnvodPlayer/js2py/base.py&apos;, 2583, 0)
+([&apos;ArrayPrototype&apos;, &apos;Constant&apos;, &apos;default_attrs&apos;], &apos;./Workspace/taxigps/xbmc-addons-chinese/plugin.video.dnvodPlayer/js2py/base.py&apos;, 2585, 0)
+([&apos;ArrayBufferPrototype&apos;, &apos;Constant&apos;, &apos;default_attrs&apos;], &apos;./Workspace/taxigps/xbmc-addons-chinese/plugin.video.dnvodPlayer/js2py/base.py&apos;, 2587, 0)
+([&apos;Int8ArrayPrototype&apos;, &apos;Constant&apos;, &apos;default_attrs&apos;], &apos;./Workspace/taxigps/xbmc-addons-chinese/plugin.video.dnvodPlayer/js2py/base.py&apos;, 2589, 0)
+([&apos;Uint8ArrayPrototype&apos;, &apos;Constant&apos;, &apos;default_attrs&apos;], &apos;./Workspace/taxigps/xbmc-addons-chinese/plugin.video.dnvodPlayer/js2py/base.py&apos;, 2591, 0)
+([&apos;Uint8ClampedArrayPrototype&apos;, &apos;Constant&apos;, &apos;default_attrs&apos;], &apos;./Workspace/taxigps/xbmc-addons-chinese/plugin.video.dnvodPlayer/js2py/base.py&apos;, 2593, 0)
+</code></pre><ul>
+<li>Function: <strong>build_data.download</strong><br>
+./Workspace/facebookresearch/ParlAI/parlai/tasks/narrative_qa/build.py<br>
+File: <a href="https://github.com/facebookresearch/ParlAI/blob/master/parlai/tasks/narrative_qa/build.py#L94">https://github.com/facebookresearch/ParlAI/blob/master/parlai/tasks/narrative_qa/build.py#L94</a><br>
+Args: [&apos;<strong>story_url</strong>&apos;, &apos;<strong>directory</strong>&apos;, &apos;Constant&apos;] (&apos;./Workspace/facebookresearch/ParlAI/parlai/tasks/narrative_qa/build.py&apos;, 94, 8)<br>
+ArgPosi: [0, 1]<br>
+Confidence: 4.7178942057266795</li>
+</ul>
+<p>No FunctionDef Found</p>
+<pre data-role="codeBlock" data-info class="language-"><code>90     if actual_story_size &lt;= 19000:
+91         if kind == &apos;gutenberg&apos;:
+92             time.sleep(2)
+93 
+94         build_data.download(story_url, directory, document_id + &apos;.content&apos;)
+95     else:
+96         return True
+97 
+98     file_type = subprocess.check_output([&apos;file&apos;, &apos;-b&apos;, story_path])
+99     file_type = file_type.decode(&apos;utf-8&apos;)
+</code></pre><p>Number of FunctionUsage: 16<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;story_url&apos;, &apos;directory&apos;, &apos;Constant&apos;], &apos;./Workspace/facebookresearch/ParlAI/parlai/tasks/narrative_qa/build.py&apos;, 94, 8)
+([&apos;url&apos;, &apos;dpath&apos;, &apos;fname&apos;], &apos;./Workspace/facebookresearch/ParlAI/parlai/tasks/funpedia/build.py&apos;, 33, 12)
+([&apos;url&apos;, &apos;outpath&apos;, &apos;filename&apos;], &apos;./Workspace/facebookresearch/ParlAI/parlai/tasks/google_sgd/build.py&apos;, 42, 12)
+([&apos;url&apos;, &apos;outpath&apos;, &apos;filename&apos;], &apos;./Workspace/facebookresearch/ParlAI/parlai/tasks/google_sgd/build.py&apos;, 46, 16)
+([&apos;url&apos;, &apos;dpath&apos;, &apos;fname&apos;], &apos;./Workspace/facebookresearch/ParlAI/parlai/mturk/tasks/talkthewalk/download.py&apos;, 28, 8)
+([&apos;url&apos;, &apos;Constant&apos;, &apos;fname&apos;], &apos;./Workspace/facebookresearch/ParlAI/parlai/mturk/tasks/wizard_of_wikipedia/run.py&apos;, 89, 8)
+([&apos;url&apos;, &apos;dpath&apos;, &apos;fname&apos;], &apos;./Workspace/facebookresearch/ParlAI/parlai/utils/safety.py&apos;, 109, 16)
+([&apos;url&apos;, &apos;dpath&apos;, &apos;fname&apos;], &apos;./Workspace/facebookresearch/ParlAI/parlai/zoo/bert/build.py&apos;, 33, 12)
+([&apos;url&apos;, &apos;dpath&apos;, &apos;Constant&apos;], &apos;./Workspace/facebookresearch/ParlAI/parlai/zoo/bart/build.py&apos;, 62, 8)
+([&apos;Constant&apos;, &apos;tmpdir&apos;, &apos;Constant&apos;], &apos;./Workspace/facebookresearch/ParlAI/tests/test_build_data.py&apos;, 80, 20)
+</code></pre><ul>
+<li>Function: <strong>self.generator</strong><br>
+./Workspace/tensorflow/tensor2tensor/tensor2tensor/data_generators/wiki_revision.py<br>
+File: <a href="https://github.com/tensorflow/tensor2tensor/blob/master/tensor2tensor/data_generators/wiki_revision.py#L286">https://github.com/tensorflow/tensor2tensor/blob/master/tensor2tensor/data_generators/wiki_revision.py#L286</a><br>
+Args: [&apos;<strong>encoder</strong>&apos;, &apos;Constant&apos;, &apos;<strong>tmp_dir</strong>&apos;] (&apos;./Workspace/tensorflow/tensor2tensor/tensor2tensor/data_generators/wiki_revision.py&apos;, 286, 24)<br>
+ArgPosi: [0, 2]<br>
+Confidence: 2.608693814530915</li>
+</ul>
+<p>No FunctionDef Found</p>
+<pre data-role="codeBlock" data-info class="language-"><code>282     tf.logging.info(&quot;Generating files for path: %s&quot;, out_file)
+283     self.corpus_files = wiki_revision_utils.corpus_files_for_shard(
+284         task_id, FLAGS.wiki_revision_num_train_shards,
+285         FLAGS.wiki_revision_num_dev_shards, FLAGS.wiki_revision_data_prefix)
+286     example_generator = self.generator(encoder, self.corpus_files, tmp_dir)
+287 
+288     packed_example_generator = self._maybe_pack_examples(example_generator)
+289     generator_utils.generate_files(packed_example_generator, [out_file])
+290     generator_utils.shuffle_dataset([out_file])
+291 
+</code></pre><p>Number of FunctionUsage: 31<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;z&apos;, &apos;is_training&apos;, &apos;out_shape&apos;], &apos;./Workspace/tensorflow/tensor2tensor/tensor2tensor/models/vanilla_gan.py&apos;, 150, 8)
+([&apos;z&apos;, &apos;Constant&apos;, &apos;out_shape&apos;], &apos;./Workspace/tensorflow/tensor2tensor/tensor2tensor/models/vanilla_gan.py&apos;, 194, 17)
+([&apos;data_dir&apos;, &apos;tmp_dir&apos;, &apos;Constant&apos;], &apos;./Workspace/tensorflow/tensor2tensor/tensor2tensor/utils/data_reader_test.py&apos;, 48, 8)
+([&apos;data_dir&apos;, &apos;tmp_dir&apos;, &apos;Constant&apos;], &apos;./Workspace/tensorflow/tensor2tensor/tensor2tensor/utils/data_reader_test.py&apos;, 50, 8)
+([&apos;data_dir&apos;, &apos;tmp_dir&apos;, &apos;Constant&apos;], &apos;./Workspace/tensorflow/tensor2tensor/tensor2tensor/data_generators/imagenet.py&apos;, 234, 8)
+([&apos;data_dir&apos;, &apos;tmp_dir&apos;, &apos;Constant&apos;], &apos;./Workspace/tensorflow/tensor2tensor/tensor2tensor/data_generators/imagenet.py&apos;, 236, 8)
+([&apos;data_dir&apos;, &apos;tmp_dir&apos;, &apos;Constant&apos;], &apos;./Workspace/tensorflow/tensor2tensor/tensor2tensor/data_generators/imagenet.py&apos;, 268, 8)
+([&apos;data_dir&apos;, &apos;tmp_dir&apos;, &apos;Constant&apos;], &apos;./Workspace/tensorflow/tensor2tensor/tensor2tensor/data_generators/imagenet.py&apos;, 270, 8)
+([&apos;encoder&apos;, &apos;Constant&apos;, &apos;tmp_dir&apos;], &apos;./Workspace/tensorflow/tensor2tensor/tensor2tensor/data_generators/wiki_revision.py&apos;, 286, 24)
+([&apos;tmp_dir&apos;, &apos;Constant&apos;, &apos;Constant&apos;], &apos;./Workspace/tensorflow/tensor2tensor/tensor2tensor/data_generators/celeba.py&apos;, 154, 14)
+</code></pre><h2 class="mume-header" id="function-def-can-help-5">Function Def can help - 5</h2>
+
+<ul>
+<li>Function: <strong>make_pad_mask</strong><br>
+./Workspace/espnet/espnet/espnet/nets/pytorch_backend/nets_utils.py<br>
+File: <a href="https://github.com/espnet/espnet/blob/master/espnet/nets/pytorch_backend/nets_utils.py#L259">https://github.com/espnet/espnet/blob/master/espnet/nets/pytorch_backend/nets_utils.py#L259</a><br>
+Args: [&apos;<strong>lengths</strong>&apos;, &apos;xs&apos;, &apos;<strong>length_dim</strong>&apos;] (&apos;./Workspace/espnet/espnet/espnet/nets/pytorch_backend/nets_utils.py&apos;, 259, 12)<br>
+ArgPosi: [0, 2]<br>
+Confidence: 5.5643763761811496</li>
+</ul>
+<p>FunctionDef: ([&apos;lengths&apos;, &apos;xs&apos;, &apos;length_dim&apos;], &apos;./Workspace/espnet/espnet/espnet/nets/pytorch_backend/nets_utils.py&apos;, 58, 0)</p>
+<pre data-role="codeBlock" data-info class="language-"><code>255                  [1, 1, 0, 0, 0, 0],
+256                  [1, 1, 0, 0, 0, 0]]], dtype=torch.uint8)
+257 
+258     &quot;&quot;&quot;
+259     return ~make_pad_mask(lengths, xs, length_dim)
+260 
+261 
+262 def mask_by_length(xs, lengths, fill=0):
+263     &quot;&quot;&quot;Mask tensor according to length.
+264 
+</code></pre><p>Number of FunctionUsage: 57<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;lengths&apos;, &apos;xs&apos;, &apos;length_dim&apos;], &apos;./Workspace/espnet/espnet/espnet/nets/pytorch_backend/nets_utils.py&apos;, 259, 12)
+([&apos;ilens&apos;, &apos;logmel_feat&apos;, &apos;Constant&apos;], &apos;./Workspace/espnet/espnet/espnet/nets/pytorch_backend/frontends/feature_transform.py&apos;, 131, 46)
+([&apos;ilens&apos;, &apos;x&apos;, &apos;Constant&apos;], &apos;./Workspace/espnet/espnet/espnet/nets/pytorch_backend/frontends/feature_transform.py&apos;, 186, 26)
+([&apos;ilens&apos;, &apos;x_&apos;, &apos;Constant&apos;], &apos;./Workspace/espnet/espnet/espnet/nets/pytorch_backend/frontends/feature_transform.py&apos;, 241, 19)
+([&apos;ilens&apos;, &apos;logmel_feat&apos;, &apos;Constant&apos;], &apos;./Workspace/espnet/espnet/espnet2/layers/log_mel.py&apos;, 70, 16)
+([&apos;ilens&apos;, &apos;x&apos;, &apos;Constant&apos;], &apos;./Workspace/espnet/espnet/espnet2/layers/utterance_mvn.py&apos;, 64, 26)
+([&apos;ilens&apos;, &apos;x&apos;, &apos;Constant&apos;], &apos;./Workspace/espnet/espnet/espnet2/layers/utterance_mvn.py&apos;, 66, 23)
+([&apos;ilens&apos;, &apos;y&apos;, &apos;Constant&apos;], &apos;./Workspace/espnet/espnet/espnet2/layers/utterance_mvn.py&apos;, 81, 27)
+([&apos;olens&apos;, &apos;output&apos;, &apos;Constant&apos;], &apos;./Workspace/espnet/espnet/espnet2/layers/stft.py&apos;, 110, 32)
+([&apos;ilens&apos;, &apos;x&apos;, &apos;Constant&apos;], &apos;./Workspace/espnet/espnet/espnet2/layers/global_mvn.py&apos;, 80, 15)
+</code></pre><ul>
+<li>Function: <strong>load_opts_from_mrjob_conf</strong><br>
+./Workspace/Yelp/mrjob/mrjob/conf.py<br>
+File: <a href="https://github.com/Yelp/mrjob/blob/master/mrjob/conf.py#L335">https://github.com/Yelp/mrjob/blob/master/mrjob/conf.py#L335</a><br>
+Args: [&apos;<strong>runner_alias</strong>&apos;, &apos;<strong>path</strong>&apos;] (&apos;./Workspace/Yelp/mrjob/mrjob/conf.py&apos;, 335, 22)<br>
+ArgPosi: [0, 1]<br>
+Confidence: 5.534567583760987</li>
+</ul>
+<p>No FunctionDef Found</p>
+<pre data-role="codeBlock" data-info class="language-"><code>331         # precedence over inheritance
+332         results = []
+333 
+334         for path in reversed(conf_paths):
+335             results = load_opts_from_mrjob_conf(
+336                 runner_alias, path, already_loaded=already_loaded) + results
+337 
+338     if runner_alias and not any(conf for path, conf in results):
+339         log.warning(&apos;No configs specified for %s runner&apos; % runner_alias)
+340 
+</code></pre><p>Number of FunctionUsage: 13<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;runner_alias&apos;, &apos;path&apos;], &apos;./Workspace/Yelp/mrjob/mrjob/conf.py&apos;, 335, 22)
+([&apos;Constant&apos;, &apos;conf_path&apos;], &apos;./Workspace/Yelp/mrjob/tests/test_conf.py&apos;, 182, 12)
+([&apos;Constant&apos;, &apos;conf_path_1&apos;], &apos;./Workspace/Yelp/mrjob/tests/test_conf.py&apos;, 196, 12)
+([&apos;Constant&apos;, &apos;conf_path&apos;], &apos;./Workspace/Yelp/mrjob/tests/test_conf.py&apos;, 230, 12)
+([&apos;Constant&apos;, &apos;conf_path&apos;], &apos;./Workspace/Yelp/mrjob/tests/test_conf.py&apos;, 255, 12)
+([&apos;Constant&apos;, &apos;conf_path&apos;], &apos;./Workspace/Yelp/mrjob/tests/test_conf.py&apos;, 274, 12)
+([&apos;Constant&apos;, &apos;conf_path&apos;], &apos;./Workspace/Yelp/mrjob/tests/test_conf.py&apos;, 295, 12)
+([&apos;Constant&apos;, &apos;conf_symlink_path&apos;], &apos;./Workspace/Yelp/mrjob/tests/test_conf.py&apos;, 301, 12)
+([&apos;Constant&apos;, &apos;conf_path&apos;], &apos;./Workspace/Yelp/mrjob/tests/test_conf.py&apos;, 318, 12)
+</code></pre><ul>
+<li>Function: <strong>storage.create_annotation</strong><br>
+./Workspace/hypothesis/h/h/views/api/annotations.py<br>
+File: <a href="https://github.com/hypothesis/h/blob/master/h/views/api/annotations.py#L78">https://github.com/hypothesis/h/blob/master/h/views/api/annotations.py#L78</a><br>
+Args: [&apos;<strong>request</strong>&apos;, &apos;<strong>appstruct</strong>&apos;, &apos;group_service&apos;] (&apos;./Workspace/hypothesis/h/h/views/api/annotations.py&apos;, 78, 17)<br>
+ArgPosi: [0, 1]<br>
+Confidence: 5.519279531232295</li>
+</ul>
+<p>No FunctionDef Found</p>
+<pre data-role="codeBlock" data-info class="language-"><code>74     &quot;&quot;&quot;Create an annotation from the POST payload.&quot;&quot;&quot;
+75     schema = CreateAnnotationSchema(request)
+76     appstruct = schema.validate(_json_payload(request))
+77     group_service = request.find_service(IGroupService)
+78     annotation = storage.create_annotation(request, appstruct, group_service)
+79 
+80     _publish_annotation_event(request, annotation, &quot;create&quot;)
+81 
+82     svc = request.find_service(name=&quot;annotation_json_presentation&quot;)
+83     annotation_resource = _annotation_resource(request, annotation)
+</code></pre><p>Number of FunctionUsage: 20<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;request&apos;, &apos;appstruct&apos;, &apos;group_service&apos;], &apos;./Workspace/hypothesis/h/h/views/api/annotations.py&apos;, 78, 17)
+([&apos;pyramid_request&apos;, &apos;data&apos;, &apos;group_service&apos;], &apos;./Workspace/hypothesis/h/tests/h/storage_test.py&apos;, 119, 8)
+([&apos;pyramid_request&apos;, &apos;data&apos;, &apos;group_service&apos;], &apos;./Workspace/hypothesis/h/tests/h/storage_test.py&apos;, 142, 8)
+([&apos;pyramid_request&apos;, &apos;data&apos;, &apos;group_service&apos;], &apos;./Workspace/hypothesis/h/tests/h/storage_test.py&apos;, 157, 12)
+([&apos;pyramid_request&apos;, &apos;data&apos;, &apos;group_service&apos;], &apos;./Workspace/hypothesis/h/tests/h/storage_test.py&apos;, 165, 8)
+([&apos;pyramid_request&apos;, &apos;data&apos;, &apos;group_service&apos;], &apos;./Workspace/hypothesis/h/tests/h/storage_test.py&apos;, 179, 17)
+([&apos;pyramid_request&apos;, &apos;data&apos;, &apos;group_service&apos;], &apos;./Workspace/hypothesis/h/tests/h/storage_test.py&apos;, 193, 12)
+([&apos;pyramid_request&apos;, &apos;data&apos;, &apos;group_service&apos;], &apos;./Workspace/hypothesis/h/tests/h/storage_test.py&apos;, 206, 17)
+([&apos;pyramid_request&apos;, &apos;data&apos;, &apos;group_service&apos;], &apos;./Workspace/hypothesis/h/tests/h/storage_test.py&apos;, 221, 17)
+([&apos;pyramid_request&apos;, &apos;data&apos;, &apos;group_service&apos;], &apos;./Workspace/hypothesis/h/tests/h/storage_test.py&apos;, 233, 17)
+</code></pre><ul>
+<li>Function: <strong>tf.summary.image</strong><br>
+./Workspace/tensorflow/models/research/object_detection/utils/visualization_utils.py<br>
+File: <a href="https://github.com/tensorflow/models/blob/master/research/object_detection/utils/visualization_utils.py#L1440">https://github.com/tensorflow/models/blob/master/research/object_detection/utils/visualization_utils.py#L1440</a><br>
+Args: [&apos;<strong>summary_name</strong>&apos;, &apos;<strong>image</strong>&apos;] (&apos;./Workspace/tensorflow/models/research/object_detection/utils/visualization_utils.py&apos;, 1440, 18)<br>
+ArgPosi: [0, 1]<br>
+Confidence: 5.512385401778136</li>
+</ul>
+<p>FunctionDef:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>tf.summary.image(
+    name, data, step=None, max_outputs=3, description=None
+)
+</code></pre><pre data-role="codeBlock" data-info class="language-"><code>1436     def image_summary_or_default_string(summary_name, image):
+1437       &quot;&quot;&quot;Returns image summaries for non-padded elements.&quot;&quot;&quot;
+1438       return tf.cond(
+1439           tf.equal(tf.size(tf.shape(image)), 4),
+1440           lambda: tf.summary.image(summary_name, image),
+1441           lambda: tf.constant(&apos;&apos;))
+1442 
+1443     if tf.executing_eagerly():
+1444       update_op = self.add_images([[images[0]]])
+1445       image_tensors = get_images()
+</code></pre><p>Number of FunctionUsage: 36<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;Constant&apos;, &apos;image_summary&apos;], &apos;./Workspace/tensorflow/models/official/vision/detection/utils/box_utils.py&apos;, 41, 4)
+([&apos;Constant&apos;, &apos;image_summary&apos;], &apos;./Workspace/tensorflow/models/official/vision/detection/utils/object_detection/visualization_utils.py&apos;, 117, 4)
+([&apos;Constant&apos;, &apos;image_with_box&apos;], &apos;./Workspace/tensorflow/models/research/slim/preprocessing/inception_preprocessing.py&apos;, 206, 6)
+([&apos;Constant&apos;, &apos;image_with_distorted_box&apos;], &apos;./Workspace/tensorflow/models/research/slim/preprocessing/inception_preprocessing.py&apos;, 218, 8)
+([&apos;name&apos;, &apos;cdf_plot&apos;], &apos;./Workspace/tensorflow/models/research/object_detection/utils/visualization_utils.py&apos;, 1287, 2)
+([&apos;name&apos;, &apos;hist_plot&apos;], &apos;./Workspace/tensorflow/models/research/object_detection/utils/visualization_utils.py&apos;, 1316, 2)
+([&apos;summary_name&apos;, &apos;image&apos;], &apos;./Workspace/tensorflow/models/research/object_detection/utils/visualization_utils.py&apos;, 1440, 18)
+([&apos;name&apos;, &apos;cdf_plot&apos;], &apos;./Workspace/tensorflow/models/research/cognitive_planning/visualization_utils.py&apos;, 704, 2)
+([&apos;name&apos;, &apos;hist_plot&apos;], &apos;./Workspace/tensorflow/models/research/cognitive_planning/visualization_utils.py&apos;, 733, 2)
+([&apos;Constant&apos;, &apos;image_with_box&apos;], &apos;./Workspace/tensorflow/models/research/cognitive_planning/preprocessing/inception_preprocessing.py&apos;, 198, 6)
+</code></pre><ul>
+<li>Function: <strong>resolve_field</strong><br>
+./Workspace/carltongibson/django-filter/django_filters/filterset.py<br>
+File: <a href="https://github.com/carltongibson/django-filter/blob/master/django_filters/filterset.py#L372">https://github.com/carltongibson/django-filter/blob/master/django_filters/filterset.py#L372</a><br>
+Args: [&apos;<strong>field</strong>&apos;, &apos;<strong>lookup_expr</strong>&apos;] (&apos;./Workspace/carltongibson/django-filter/django_filters/filterset.py&apos;, 372, 29)<br>
+ArgPosi: [0, 1]<br>
+Confidence: 5.302949018614701</li>
+</ul>
+<p>FunctionDef: ([&apos;model_field&apos;, &apos;lookup_expr&apos;], &apos;./Workspace/carltongibson/django-filter/django_filters/utils.py&apos;, 175, 0)</p>
+<pre data-role="codeBlock" data-info class="language-"><code>368     @classmethod
+369     def filter_for_field(cls, field, field_name, lookup_expr=None):
+370         if lookup_expr is None:
+371             lookup_expr = settings.DEFAULT_LOOKUP_EXPR
+372         field, lookup_type = resolve_field(field, lookup_expr)
+373 
+374         default = {
+375             &apos;field_name&apos;: field_name,
+376             &apos;lookup_expr&apos;: lookup_expr,
+377         }
+</code></pre><p>Number of FunctionUsage: 13<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;field&apos;, &apos;lookup_expr&apos;], &apos;./Workspace/carltongibson/django-filter/django_filters/filterset.py&apos;, 372, 29)
+([&apos;model_field&apos;, &apos;term&apos;], &apos;./Workspace/carltongibson/django-filter/tests/test_utils.py&apos;, 250, 28)
+([&apos;model_field&apos;, &apos;term&apos;], &apos;./Workspace/carltongibson/django-filter/tests/test_utils.py&apos;, 264, 28)
+([&apos;model_field&apos;, &apos;term&apos;], &apos;./Workspace/carltongibson/django-filter/tests/test_utils.py&apos;, 271, 28)
+([&apos;model_field&apos;, &apos;term&apos;], &apos;./Workspace/carltongibson/django-filter/tests/test_utils.py&apos;, 285, 28)
+([&apos;model_field&apos;, &apos;term&apos;], &apos;./Workspace/carltongibson/django-filter/tests/test_utils.py&apos;, 292, 28)
+([&apos;model_field&apos;, &apos;Constant&apos;], &apos;./Workspace/carltongibson/django-filter/tests/test_utils.py&apos;, 329, 37)
+([&apos;model_field&apos;, &apos;Constant&apos;], &apos;./Workspace/carltongibson/django-filter/tests/test_utils.py&apos;, 336, 41)
+([&apos;model_field&apos;, &apos;Constant&apos;], &apos;./Workspace/carltongibson/django-filter/tests/test_utils.py&apos;, 343, 41)
+([&apos;model_field&apos;, &apos;Constant&apos;], &apos;./Workspace/carltongibson/django-filter/tests/test_utils.py&apos;, 352, 24)
+</code></pre><h2 class="mume-header" id="due-to-different-functionality-1">Due to different functionality - 1</h2>
+
+<ul>
+<li>Function: <strong>mycnf.replace</strong><br>
+./Workspace/aaPanel/BaoTa/script/backup.py<br>
+File: <a href="https://github.com/aaPanel/BaoTa/blob/master/script/backup.py#L105">https://github.com/aaPanel/BaoTa/blob/master/script/backup.py#L105</a><br>
+Args: [&apos;<strong>subStr</strong>&apos;, &apos;<strong>sea</strong>&apos;] (&apos;./Workspace/aaPanel/BaoTa/script/backup.py&apos;, 105, 16)<br>
+ArgPosi: [0, 1]<br>
+Confidence: 5.55404333595304</li>
+</ul>
+<p>No FunctionDef Found</p>
+<pre data-role="codeBlock" data-info class="language-"><code>101             print(u&quot;----------------------------------------------------------------------------&quot;)
+102             return;
+103         
+104         mycnf = public.readFile(&apos;/etc/my.cnf&apos;);
+105         mycnf = mycnf.replace(subStr,sea)
+106         if len(mycnf) &gt; 100:
+107             public.writeFile(&apos;/etc/my.cnf&apos;,mycnf);
+108         
+109         endDate = time.strftime(&apos;%Y/%m/%d %X&apos;,time.localtime())
+110         outTime = time.time() - startTime
+</code></pre><p>Number of FunctionUsage: 12<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;sea&apos;, &apos;subStr&apos;], &apos;./Workspace/aaPanel/BaoTa/script/backup.py&apos;, 91, 16)
+([&apos;subStr&apos;, &apos;sea&apos;], &apos;./Workspace/aaPanel/BaoTa/script/backup.py&apos;, 105, 16)
+([&apos;src_dump&apos;, &apos;sub_dump&apos;], &apos;./Workspace/aaPanel/BaoTa/class/database.py&apos;, 511, 20)
+([&apos;sea&apos;, &apos;subStr&apos;], &apos;./Workspace/aaPanel/BaoTa/class/backup_bak.py&apos;, 287, 20)
+([&apos;sea&apos;, &apos;subStr&apos;], &apos;./Workspace/aaPanel/BaoTa/class/panelTask.py&apos;, 473, 20)
+([&apos;Constant&apos;, &apos;newPath&apos;], &apos;./Workspace/aaPanel/BaoTa/class/public.py&apos;, 961, 16)
+</code></pre><h2 class="mume-header" id="different-def-with-different-args-1">Different Def with different args - 1</h2>
+
+<ul>
+<li>Function: <strong>self._extract_video</strong><br>
+./Workspace/ytdl-org/youtube-dl/youtube_dl/extractor/francetv.py<br>
+File: <a href="https://github.com/ytdl-org/youtube-dl/blob/master/youtube_dl/extractor/francetv.py#L209">https://github.com/ytdl-org/youtube-dl/blob/master/youtube_dl/extractor/francetv.py#L209</a><br>
+Args: [&apos;<strong>video_id</strong>&apos;, &apos;<strong>catalog</strong>&apos;] (&apos;./Workspace/ytdl-org/youtube-dl/youtube_dl/extractor/francetv.py&apos;, 209, 15)<br>
+ArgPosi: [0, 1]<br>
+Confidence: 4.599877249749611</li>
+</ul>
+<p>FunctionDef:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>Present in 8 files
+youtube_dl/extractor/condenast.py
+def _extract_video(self, params)
+youtube_dl/extractor/ellentube.py
+def _extract_video(self, data, video_id)
+youtube_dl/extractor/francetv.py
+def _extract_video(self, video_id, catalogue=None)
+youtube_dl/extractor/laola1tv.py
+def _extract_video(self, url)
+youtube_dl/extractor/svt.py
+def _extract_video(self, video_info, video_id):
+youtube_dl/extractor/tvnow.py
+def _extract_video(self, info, display_id)
+youtube_dl/extractor/veoh.py
+def _extract_video(self, source)
+youtube_dl/extractor/zattoo.py
+def _extract_video(self, channel_name, video_id, record_id=None, is_live=False)
+
+</code></pre><pre data-role="codeBlock" data-info class="language-"><code>205             catalog = qs.get(&apos;catalogue&apos;, [None])[0]
+206             if not video_id:
+207                 raise ExtractorError(&apos;Invalid URL&apos;, expected=True)
+208 
+209         return self._extract_video(video_id, catalog)
+210 
+211 
+212 class FranceTVSiteIE(FranceTVBaseInfoExtractor):
+213     _VALID_URL = r&apos;https?://(?:(?:www\.)?france\.tv|mobile\.france\.tv)/(?:[^/]+/)*(?P&lt;id&gt;[^/]+)\.html&apos;
+214 
+</code></pre><p>Number of FunctionUsage: 15<br>
+Usage Found on same length of arguments (first 10):</p>
+<pre data-role="codeBlock" data-info class="language-"><code>([&apos;data&apos;, &apos;video_id&apos;], &apos;./Workspace/ytdl-org/youtube-dl/youtube_dl/extractor/ellentube.py&apos;, 87, 15)
+([&apos;elem&apos;, &apos;Constant&apos;], &apos;./Workspace/ytdl-org/youtube-dl/youtube_dl/extractor/ellentube.py&apos;, 129, 12)
+([&apos;Constant&apos;, &apos;article_id&apos;], &apos;./Workspace/ytdl-org/youtube-dl/youtube_dl/extractor/svt.py&apos;, 126, 20)
+([&apos;data&apos;, &apos;video_id&apos;], &apos;./Workspace/ytdl-org/youtube-dl/youtube_dl/extractor/svt.py&apos;, 185, 20)
+([&apos;video_info&apos;, &apos;video_id&apos;], &apos;./Workspace/ytdl-org/youtube-dl/youtube_dl/extractor/svt.py&apos;, 219, 28)
+([&apos;video_id&apos;, &apos;catalog&apos;], &apos;./Workspace/ytdl-org/youtube-dl/youtube_dl/extractor/francetv.py&apos;, 209, 15)
+([&apos;channel_name&apos;, &apos;video_id&apos;], &apos;./Workspace/ytdl-org/youtube-dl/youtube_dl/extractor/zattoo.py&apos;, 221, 15)
+([&apos;channel_name&apos;, &apos;video_id&apos;], &apos;./Workspace/ytdl-org/youtube-dl/youtube_dl/extractor/zattoo.py&apos;, 238, 15)
+([&apos;channel_name&apos;, &apos;video_id&apos;], &apos;./Workspace/ytdl-org/youtube-dl/youtube_dl/extractor/zattoo.py&apos;, 283, 15)
+([&apos;info&apos;, &apos;display_id&apos;], &apos;./Workspace/ytdl-org/youtube-dl/youtube_dl/extractor/tvnow.py&apos;, 178, 15)
+</code></pre>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

@@ -1,0 +1,8 @@
+{
+  "connections": {
+    "smartscript": {
+      "connection_string": "mongodb://<username>:<password>@localhost:27017/bug_db",
+      "connection_options": {}
+    }
+  }
+}

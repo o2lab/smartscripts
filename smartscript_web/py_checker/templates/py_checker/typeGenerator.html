@@ -1,0 +1,333 @@
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164875144-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-164875144-1');
+</script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes">
+    <link rel="stylesheet" href="{% static 'py_checker/css/main.css' %}">
+    
+    <link rel="stylesheet" data-name="vs/editor/editor.main"
+          href="{% static 'py_checker/monaco/min/vs/editor/editor.main.css' %}">
+    <title>Type Generator</title>
+    
+<script type="text/javascript">  
+    function sub() {  
+        $.ajax({  
+                cache: true,  
+                type: "POST",  
+                url:"upload",  
+                data:$('#uploadF').serialize(), 
+                async: false,  
+                error: function(request) {  
+                    console.log("Connection error:"+request.error);  
+                },  
+                success: function(data) {
+                    update(data)
+                    alert("SUCCESS!");  
+                }  
+            });  
+    }  
+</script>  
+</head>
+
+
+<body>
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+
+    
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+        <header class="masthead mb-auto">
+          <div class="inner">
+            <!-- <h3 class="masthead-brand">SmartScripts</h3> -->
+            <nav class="nav nav-masthead justify-content-center">
+              <a class="nav-link " href="https://smart-scripts.org">Home</a>
+              <!-- <a class="nav-link" href="https://smart-scripts.org/py/echarts">Pie Chart</a> -->
+              <!-- <a class="nav-link" href="https://smart-scripts.org/py/linecharts">Line Stack</a> -->
+              <!-- <a class="nav-link" href="https://db.smart-scripts.org/dbApp">Data Manager</a> -->
+              <a class="nav-link" href="https://smart-scripts.org/py/model">'Dict_key' Error Detector </a>
+              <a class="nav-link active" href="https://smart-scripts.org/py/typeGenerator">TypeGenerator</a>
+              <a class="nav-link " href="https://smart-scripts.org/py/typeChecker">SmartScripts AI</a>
+              <a class="nav-link" href="https://smart-scripts.org/py/smartkube">SmartKube</a>
+              <a class="nav-link" href="https://smart-scripts.org/static/py_checker/clcheck/">CLcheck</a>
+              <!-- <a class="nav-link" href="https://smart-scripts.org/py/Report">Bug Reports</a> -->
+              <!-- <a class="nav-link" href="https://smart-scripts.org:8000/?folder=/home/coder/project">SmartDocker</a> -->
+              <a class="nav-link" href="https://smart-scripts.org/py/API">API</a>
+              <a class="nav-link" href="https://smart-scripts.org/py/Report">Bug Reports: <font color="springgreen">12</font>   real bugs </a>
+            </nav>
+          </div>
+        </header>
+    </div>
+
+
+    <header class="masthead " style="margin-top: -1rem"> 
+        <div class="inner">
+            <nav class="navbar navbar-expand-sm d-flex justify-content-between">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            <h3 class="masthead-brand">
+                <img style="height: 3rem;margin-top: 0.6rem;" src="{% static 'py_checker/images/type.png' %}" alt="Texas A&M University">
+            </h3>
+            
+            <ul class="navbar-nav float-right"> 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Model Selection
+                                </a>
+                    <div id="examples" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        
+                        <a class="dropdown-item active" href="#"  data-id="1">15 Base Types</a>
+                        <a class="dropdown-item" href="#" data-id="2">500 Types Model</a>
+                        <a class="dropdown-item" href="#"  data-id="3">PYI Model</a>
+                        
+                    </div>
+           
+                </li>
+            </ul>
+        </nav>
+        </div>
+    </header>
+
+
+    <main role="main" class="row inner cover" style="margin-top: -2rem">
+
+        <div class="col-12">
+            <p class="lead">
+                {% csrf_token %}
+            <div id="container" class="editor"></div>
+            </p>
+            <p class="lead text-center">
+
+                <form id="uploadF" enctype="multipart/form-data" method="post" οnsubmit="return false" action="upload">
+                    {% csrf_token %}
+                    <input type="file" id="myfile" class="btn btn-info btn-sm" name="myfile" />
+                    <!-- <input type="submit" class="btn btn-info btn-sm" value="Upload" /> -->
+                    
+                </form>
+                
+                <button type="button" class="btn btn-info btn-sm" onclick="submitFile();">Submit</button>
+                <!-- <button type="button" class="btn btn-info btn-sm" onclick="runCode();">Run Code</button> -->
+                <!-- <button type="button" class="btn btn-secondary btn-sm" onclick="checkCode();">Python Linter</button> -->
+                <button type="button" class="btn btn-success btn-sm" onclick="smartScript();">Type Generator</button>
+            </p>
+            <p class="lead text-center">
+            <div class="terminal-border">Analysis Results</div>
+            <div id="output" class="shadow-textarea" style="width: 100%; min-height: 50px"></div>
+            </p>
+        </div>
+    </main>
+
+</div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var require = {paths: {'vs': "{% static 'py_checker/monaco/min/vs' %}"}};
+</script>
+<script src="{% static 'py_checker/monaco/min/vs/loader.js' %}"></script>
+<script src="{% static 'py_checker/monaco/min/vs/editor/editor.main.nls.js' %}"></script>
+<script src="{% static 'py_checker/monaco/min/vs/editor/editor.main.js' %}"></script>
+<script src="{% static 'py_checker/js/index.js' %}"></script>
+    <script src="{% static 'py_checker/js/jquery.js' %}"></script>
+<script>
+   
+
+    var bugModel = monaco.editor.createModel("Welcome to use the SmartScript!\nPlease select the code on the left to proceed. \n", 'python')
+    var editor = monaco.editor.create(document.getElementById('container'),
+        {
+            theme: 'vs-dark',
+            automaticLayout: true,
+            scrollBeyondLastLine: false,
+            value: "Welcome to use the SmartScript!\nPlease select the code on the left to proceed. \n",
+	        language: "python"
+        });
+    editor.setModel(bugModel);
+    axios.get('getUploadTypeFile').then( response => {
+                let buggyCode = response.data['buggy'];
+                let numline = buggyCode.split("\n").length
+                if(numline<25){
+                    document.getElementById('container').style.height="400px"
+                }else if(numline<40){
+                    document.getElementById('container').style.height="500px"
+                }else{
+                    document.getElementById('container').style.height="600px"
+                }
+                bugModel.setValue(buggyCode);
+    }).catch(err => console.log(err.message))
+    // let examplesButtons = document.getElementById('examples').getElementsByTagName('a');
+    // for (let i = 0; i < examplesButtons.length; ++i) {
+    //     examplesButtons[i].onclick = function () {
+    //         for (let j = 0; j < examplesButtons.length; ++j) {
+    //             examplesButtons[j].classList.remove('active');
+    //         }
+    //         examplesButtons[i].classList.add('active');
+
+            
+    //     }
+    // }
+    function myrefresh()
+    {
+    window.location.reload();
+    }
+
+    function submitFile(){
+        update("Uploading File...")
+        var formData = new FormData();
+        var pyfile = document.querySelector('#myfile');
+        formData.append("myfile", pyfile.files[0]);
+        axios.post('uploadType', formData, {
+            headers: {
+            'Content-Type': 'multipart/form-data'
+            }
+        }).then(response => {
+            update(response.data['issues']+"\n"+"This page will refresh in 3 seconds.")
+        }).catch(err => console.log(err.message))
+        // update("This page will refresh in 3 seconds.")
+        setTimeout('myrefresh()',3000);
+        // axios.post('upload', $('#uploadF').serialize() ).then(response => {
+        //     update(response.data['issues'])
+        // }).catch(err => console.log(err.message))
+    }
+
+    // function checkCode() {
+    //     update("running Python Linter...")
+    //     axios.post('check', {
+    //         code: bugModel.getValue()
+    //     }).then(response => {
+    //         update(response.data['issues'])
+    //     }).catch(err => console.log(err.message))
+    // }
+    
+    function smartScript() {
+
+
+        let examplesButtons = document.getElementById('examples').getElementsByTagName('a');
+        select = 0
+        for (let i = 0; i < examplesButtons.length; ++i) {
+            if(examplesButtons[i].classList.contains('active')){
+                select = i;
+            }
+        } 
+        switch(select) {
+            case 0:
+                update("Running 15 Base Types Model ...")
+                break;
+            case 1:
+                update("Running 500 Types Model ...")
+                break;
+            case 2:
+                update("Running PYI Model ...")
+                break;
+            case 3:
+                update("Running Context Model and checking inconsistencies ... This might take a while ...")
+                break;
+            default:
+                update("No Model selected.")
+        } 
+        
+        axios.post('TypeModel', {
+            code: bugModel.getValue(),
+            model: select
+        }).then(response => {
+            bugModel.setValue(response.data['result']);
+            // update(response.data['issues'])
+            update(response.data['issue'])
+        }).catch(err => {console.log(err.message);update(err.message);})
+    }
+    // function runCode(id) {
+    //     update("running buggy code...")
+    //     axios.post('runCode', {
+    //     code: bugModel.getValue(),
+    //     type: "buggy.py"
+    //     }).then(response => {
+    //         update(response.data['issues'])
+    //     }).catch(err => console.log(err.message))
+    // }
+    function update(issues) {
+        let textarea = document.getElementById('output');
+        textarea.innerHTML = issues;
+        let issuesLinks = textarea.getElementsByTagName('a');
+        for (let i = 0; i < issuesLinks.length; ++i) {
+            let issueLink = issuesLinks[i];
+            const lineno = Number(issueLink.innerText.split(':')[1]);
+            issueLink.onclick = function () {
+                bugModel.revealLineInCenterIfOutsideViewport(lineno);
+                issueLink.classList.add('lineno-visited');
+                return true;
+            };
+        }
+    }
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     examplesButtons[0].click();
+    // }, false);
+
+</script>
+
+
+<script type="text/javascript"> 
+    let examplesButtons = document.getElementById('examples').getElementsByTagName('a');
+    for (let i = 0; i < examplesButtons.length; ++i) {
+        examplesButtons[i].onclick = function () {
+
+            switch(i) {
+            case 0:
+                update("15 Base Types Model Selected.")
+                break;
+            case 1:
+                update("500 Types Model Selected.")
+                break;
+            case 2:
+                update("PYI Model Selected.")
+                break;
+            case 3:
+                update("Context Model Selected.")
+                break;
+            default:
+                update("No Model Selected.")
+        } 
+
+            for (let j = 0; j < examplesButtons.length; ++j) {
+                examplesButtons[j].classList.remove('active');
+            }
+            examplesButtons[i].classList.add('active');
+
+            // // get data from serverulimit -c 67108864
+            // axios.get('sampleCode?id='+examplesButtons[i].dataset.id).then( response => {
+            //     let buggyCode = response.data['buggy'];
+            //     let fixCode = response.data['fix'];
+            //     let numline = Math.max((buggyCode.split("\n").length),(fixCode.split("\n").length))
+            //     console.log(numline)
+            //     // document.getElementById('container').style.marginTop="0px"
+            //     if(numline<25){
+            //         document.getElementById('container').style.height="400px"
+            //     }else if(numline<40){
+            //         document.getElementById('container').style.height="650px"
+            //     }else{
+            //         document.getElementById('container').style.height="800px"
+            //     }
+            //     bugModel.setValue(buggyCode);
+            //     fixModel.setValue(fixCode);
+            //     editor.setModelLanguage(bugModel, response.data['language']);
+            //     editor.setModelLanguage(fixModel, response.data['language']);
+            // }).catch(err => console.log(err.message))
+        }
+    }
+
+
+   </script>
+
+</body>
+</html>

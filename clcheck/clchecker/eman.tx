@@ -1,0 +1,224 @@
+eman:
+    synopsis=Synopsis options*=Option rules=Rules? explanation=Explanation?
+;
+
+// ****** this rules includes keywords that needed to match first. *****
+// ****** We put them at the top to avoid potential conflict when *****
+// ************  multi rules apply at the same time *********
+// whitespace is a space or a tap (newline is excluded)
+Synopsis:
+    "e-synopsis" ":"  command=SubCommand statement=Statement variables=Variables? "e-end" 
+;
+
+Option[ws='\t ']:
+    /\n*/- "e-options" name=Word ":" /\n*/-  pairs+=OptionPair /\n*/- variables=Variables? /\n*/- "e-end" /\n*/-
+;
+
+Rules:
+    "e-rules" ":" rules*=RulePair "e-end"
+;
+
+Explanation[noskipws]:
+    /\s*/-
+    "e-explanation" ":" /\n*/-  pairs*=ExplanationPair /\n*/- "e-end"
+    /\s*/-
+;
+
+
+// ****************************** Synopsis ************************************
+Type:
+    '<' type_name=TypeName '>'
+;
+
+TypeName:
+    'sINT' | 'INT' | 'FLOAT' | 'BOOL' | 'STRING' | 'ANY' | 'bANY'| /\/[\s\S]+?\// | 'VERSION' | 'PATH' | 'DIR' | 'PKG' | 'bPATHorDIR' | 'bPATH' | 'bDIR' | 'bPKG'
+;
+
+// Since an UnorderedStatement can be an element of a SequentialStatement, we put UnorderedStatement
+// before SequentialStatement. So an UnorderedStatement will be matched first when applicable. 
+Statement:
+    unordered_statement=UnorderedStatement | sequential_statement=SequentialStatement
+;
+
+UnorderedStatement:
+    '(' elements*=Element ')#'
+;
+
+SequentialStatement:
+    elements*=Element
+;
+
+Element:
+    sub_command=SubCommand  | string=STRING | type=Type (multi="+" | multi="*")? | unordered_statement=UnorderedStatement | collection=Collection (multi="+" | multi="*")? | placeholder=PlaceHolder (multi="+" | multi="*")?
+;
+
+SubCommand:
+    value=Word
+;
+
+Collection:
+    one_must_present_collection=OneMustPresentCollection | optional_collection=OptionalCollection
+;
+
+OneMustPresentCollection:
+    '{' statements *= Statement['|'] '}' specification=Specification?
+;
+
+OptionalCollection:
+    '[' statements *= Statement['|'] ']' specification=Specification?
+;
+
+PlaceHolder:
+    "<" value=Word2 ">"
+;
+
+Variables[skipws]:
+    "e-variables" ":" /\n*/- vars*=VariablePair /\n*/- "e-end"
+;
+
+VariablePair[ws=' \n\t']:
+    "e-let" varname=/[\w-]+/ "=" statement=Statement
+;
+
+
+// ****************************** Option ************************************
+
+OptionPair[noskipws]:
+    /\n*/- /\t| {4}/- (key=Word2 colon=":")? option_item=OptionItem
+;
+
+OptionItem[noskipws]:
+    option_text=OptionText option_syntax=OptionSyntax? option_specification=OptionSpecification? explanation_values+=ExplanationValue
+;
+
+OptionText[skipws]:
+    single_options+=SingleOption[","] /\n/- | plaintext=Plaintext /\n/-
+;
+
+OptionSyntax[skipws]:
+    "e-syntax" ":" single_options+=SingleOption[","] "e-end" /\n/-
+;
+
+OptionSpecification[skipws]:
+    "e-spec" ":" specification=Specification "e-end" /\n/-
+;
+OptionExplanation[noskipws]:
+    /\t{2}| {8}|\t {4} | {4}\t/- explanation=/.*/ /\n/-
+;
+
+SingleOption[skipws]:
+    ShortOption | LongOption
+;
+
+ShortOption:
+    dash='-' option=Word (multi_times='+')? (equal='=' statement=Statement)?
+;
+
+LongOption:
+    dash='--' option=Word (multi_times='+')? (equal='=' statement=Statement)?
+;
+
+Plaintext:
+    !Keyword /.*/
+;
+
+// ****************************** Explanation ************************************
+ExplanationPair[noskipws]:
+    /\t| {4}/ keys*=Word2[/ *, */] / *\n/ explanation_values+=ExplanationValue /\n/?
+;
+
+ExplanationValue[noskipws]:
+    /\t{2}| {8}/ value=/.*/ /\n/ | value=/[ \t]*\n/
+;
+
+
+// ****************************** Specification ************************************
+Specification:
+    '(' (after=After? before=Before? always=Always? mutex=Mutex? info=Info?)#[','] (","? nws="NWS")? ')'
+;
+
+
+After:
+    "after" ":" item=Item
+;
+
+Before:
+    "before" ":" item=Item
+;
+
+Always:
+    "always" ":" item=Item
+;
+
+Mutex:
+    "mutex" ":" item=Item
+;
+
+Info:
+    warning=Warning | error=Error | example=Example | other_key_values*=OtherKeyValue
+;
+
+Warning:
+    "warning" ":" value=StringOrVar
+;
+
+Error:
+    "error" ":" value=StringOrVar
+;
+
+Example:
+    "example" ":" value=StringOrVar
+;
+
+OtherKeyValue:
+    key=Word ":" value=StringOrVar
+;
+
+StringOrVar:
+    string=STRING | var=Word
+;
+
+Item:
+    all_must_present_item=AllMustPresentItem | one_must_present_item=OneMustPresentItem
+;
+
+AllMustPresentItem:
+    '[' refs+=Word2[','] ']'
+;
+
+OneMustPresentItem:
+    '{' refs*=Word2['|'] '}'
+;
+
+
+// ****************************** Rule ************************************
+RulePair:
+    key=Word ":" specification=Specification
+;
+
+// ****************************** Keyword ************************************
+
+
+
+// word that excludes keyword; letters, numbers, underscores, hyphen or question mark, but not starts with hyphen
+Word:
+   !Keyword  /(?!-)[\?\w-]+/
+;
+
+// word that excludes keyword; letters, numbers, underscores, hyphen or question mark, and can start with hyphen
+Word2:
+    !Keyword /[\?\w-]+/
+;
+
+Keyword:
+    "e-let" | "e-variables" | "e-synopsis" | "e-options" | "e-explanation" | "e-end" | "e-syntax" | "e-spec" | TypeName
+;
+
+// ****************************** Comment ************************************
+SingleComment:
+    /[\t ]*\/\/.*\n?/
+;
+
+Comment[skipws, ws='\n']:
+    SingleComment+
+;
