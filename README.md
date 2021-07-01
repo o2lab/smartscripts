@@ -1,5 +1,7 @@
-# Smart-Script Website Setup
-[toc]
+# Smart-Script Website 
+
+
+Please visit our official website at https://smart-scripts.org/.
 
 ## Environment 
 
@@ -756,7 +758,7 @@ Don't forget to update the app.js in adminMongo
 
 
 ## SWAP
-
+```
 sudo swapon --show
 
 sudo fallocate -l 20G /swapfile
@@ -764,7 +766,7 @@ sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
 sudo free -h
-
+```
 
 ## After Startup
 
